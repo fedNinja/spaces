@@ -1,8 +1,9 @@
 var myIndex = 0;
-//carousel();
+carousel();
 var url ="/list-properties";
 
-/*	var i;
+function carousel() {
+	var i;
 	var x = document.getElementsByClassName("carousel-img");
 	for (i = 0; i < x.length; i++) {
 		x[i].style.display = "none";  
@@ -11,7 +12,7 @@ var url ="/list-properties";
 	if (myIndex > x.length) {myIndex = 1}    
 		x[myIndex-1].style.display = "block";  
     setTimeout(carousel, 2000); // Change image every 2 seconds
-}*/
+}
 
 
 $(function(){

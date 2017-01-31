@@ -6,13 +6,18 @@ var processData = function(data, reqDate) {
 	else {
 		displayData(dispData);  
 		var results = []; 
+	getLocation(city);
 dispData.forEach(function(record) {
 	results.push(record.address + " " + record.city);
 });
+
 window.eqfeed_callback = function(results) {
+		console.log("I am here....");
+		console.log(results);
         for (var i = 0; i < results.features.length; i++) {
           var coords = results.features[i].geometry.coordinates;
           var latLng = new google.maps.LatLng(coords[1],coords[0]);
+          console.log(latLng);
           var marker = new google.maps.Marker({
             position: latLng,
             map: map
@@ -22,7 +27,6 @@ window.eqfeed_callback = function(results) {
 
 
 	}
-	getLocation(city);
 }
 
 
@@ -53,7 +57,7 @@ var getLocation = function(address) {
 }
 
 var displayData = function(data) {
-	console.log(data.length);
+	//console.log(data.length);
 	var numberOfRows = Math.ceil(data.length/4);
 	for(var i=0;i<numberOfRows;i++){
 		$('#listing').append('<div class="space-row" id="row'+(i+1)+'">');
@@ -96,7 +100,7 @@ $.ajax({
 
 				},
 				success:function(data){
-				console.log(data);
+				//console.log(data);
 				if(!data) console.log('no spaces found');
 				else processData(data,reqDate);
 				},
