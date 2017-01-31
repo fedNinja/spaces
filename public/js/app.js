@@ -17,6 +17,27 @@ function carousel() {
 
 $(function(){
 
+	
+	/************Login form :start**************/
+	$('a.login-modal').click(function() {
+    // Add the mask to body
+    $('body').append('<div id="mask"></div>');
+    $('#mask').fadeIn(300);
+    $('#login-box').css("display","block");
+    return false;
+
+	});
+
+	$(document).on('click', 'a.close, #mask', function() {
+  		$('#mask , .login-popup').fadeOut(300 , function() {
+    	$('#mask').remove();  
+		}); 
+		return false;
+	});
+	/****Login form :End**************/
+
+
+	/*************Search-form:start***********/
 	$('#js-space-form').submit(function(e){
 		e.preventDefault();
 		console.log("I am here");
@@ -26,7 +47,9 @@ $(function(){
 		window.location.href="./html/listPage.html?city="+cityName+"&date="+dateSelected;
 	});
 
-	$('#owner-form').submit(function(e){
+	/*************search form:End*************/
+
+	/*$('#owner-form').submit(function(e){
 		e.preventDefault();
 		var files=$('#fileUpload')[0].files[0];
 		var form=$('#owner-form')[0];
@@ -53,7 +76,7 @@ $(function(){
      	//}
      //}
 
- });
+ });*/
 
 
 

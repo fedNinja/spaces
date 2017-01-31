@@ -53,10 +53,39 @@ app.get('/list-properties/:id', function (req, res, next) {
 });
 
 
+
+app.post('/upload', function(req, res) {
+ console.log(req)
+ var sampleFile;
+
+ if (!req.files) {
+   res.send('No files were uploaded.');
+   return;
+ }
+// The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
+ sampleFile = req.files.sampleFile;
+ var fileName=req.files.sampleFile.name;
+ //Use the mv() method to place the file somewhere on your server
+ //sampleFile.mv('uploads/filename.jpg', function(err) {
+  sampleFile.mv('uploads/'+fileName, function(err) {
+   if (err) {
+     res.status(500).send(err);
+   }
+   else {
+     res.send('File uploaded!');
+   }
+ });
+});
+
+
+
+/*******************************
+
 app.post('/upload', function(request, response){
   var uploadedFile;
   if(!request.files){
     return response.send('problem with upload');
+    
     //return response.status(500).json({message:'no uploaded file'});
   }
   uploadedFile=request.files.fileUpload;
@@ -74,6 +103,8 @@ app.post('/upload', function(request, response){
   
 
 });
+*************************/
+
 
 app.get('/owner', function(request, response){
   response.sendFile(__dirname + "/public/html/owner.html");

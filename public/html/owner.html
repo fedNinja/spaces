@@ -20,10 +20,22 @@
 	</header>
 	<main>
 	  <div class="row">
-        <form class="search-form" id="owner-form" encType="multipart/form-data">
+	  	<form ref='uploadForm'
+         id='uploadForm'
+         action='/upload'
+         method='post'
+         encType="multipart/form-data">
+           <input type="file" name="sampleFile" id="sampleFile" />
+           <input type='submit' value='Upload!' />
+           <span id = "status"></span>
+       </form>
+
+
+
+       <!-- <form class="search-form" id="owner-form" encType="multipart/form-data">
         <input  class="col-4" type="file" id="fileUpload" name="fileUpload[]" multiple="multiple">
         <button  class="col-4" type="submit" id="submitBtn" value="SUBMIT">SUBMIT</button>
-      </form>
+      </form>-->
       </div>
     </div>
   </main>

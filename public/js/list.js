@@ -1,4 +1,8 @@
 var city;
+var geocoder;
+var map;
+var bounds = new google.maps.LatLngBounds();
+var iw;
 
 var processData = function(data, reqDate) {
 	var dispData =  checkAvailableDates(data,reqDate);
@@ -6,32 +10,11 @@ var processData = function(data, reqDate) {
 	else {
 		displayData(dispData);  
 		var results = []; 
-	getLocation(city);
-dispData.forEach(function(record) {
-	results.push(record.address + " " + record.city);
-});
-
-window.eqfeed_callback = function(results) {
-		console.log("I am here....");
-		console.log(results);
-        for (var i = 0; i < results.features.length; i++) {
-          var coords = results.features[i].geometry.coordinates;
-          var latLng = new google.maps.LatLng(coords[1],coords[0]);
-          console.log(latLng);
-          var marker = new google.maps.Marker({
-            position: latLng,
-            map: map
-          });
-        }
-      }
-
-
-	}
-}
-
-
-function eqfeed_callback(response) {
-  map.data.addGeoJson(response);
+		dispData.forEach(function(record, index) {
+			results.push([record.name, record.address + " " + record.city, index+1]);
+		});
+		getLocation(city, results);
+    }
 }
 
 var checkAvailableDates = function(data, reqDate) {
@@ -44,16 +27,52 @@ var checkAvailableDates = function(data, reqDate) {
 	return returnData;
 }
 
-var getLocation = function(address) {
-	var geocoder = new google.maps.Geocoder();
+var getLocation = function(address, results) {
+	geocoder = new google.maps.Geocoder();
 	var latitude, longitude;
-	geocoder.geocode( { 'address': address}, function(results, status) {
+	geocoder.geocode({'address': address}, function(res, status) {
 		if (status == google.maps.GeocoderStatus.OK) {
-    		latitude = results[0].geometry.location.lat();
-	   		longitude = results[0].geometry.location.lng();
+    		latitude = res[0].geometry.location.lat();
+	   		longitude = res[0].geometry.location.lng();
 	   		initMap(latitude, longitude);
+	   		for (var i=0; i<results.length; i++) {
+	   			geocodeAddress(results, i);
+	   		}
     	} 
 	}); 
+}
+
+var geocodeAddress = function(locations, i) {
+	var title = locations[i][0];
+	var address = locations[i][1];
+	var url = locations[i][2];
+	geocoder.geocode({'address': address}, function(results, status) {
+		if (status == google.maps.GeocoderStatus.OK) {
+			var marker = new google.maps.Marker({
+				icon: 'http://maps.google.com/mapfiles/ms/icons/blue.png',
+				map: map,
+				position: results[0].geometry.location,
+				title: title,
+				animation: google.maps.Animation.DROP,
+				address: address,
+				url: "Property "+url
+			})
+			infoWindow(marker, map, title, address, url);
+			bounds.extend(marker.getPosition());
+			map.fitBounds(bounds);
+		}
+	});
+}
+
+var infoWindow = function(marker, map, title, address, url) {
+	google.maps.event.addListener(marker, 'click', function() {
+		var html = "<div><h3>"+title+"<h3><p>" +address+"<br></div></p></div>";
+		iw = new google.maps.InfoWindow({
+			content: html,
+			maxWidth: 350
+		});
+		iw.open(map, marker);
+	});
 }
 
 var displayData = function(data) {
@@ -76,21 +95,21 @@ var displayData = function(data) {
 
 function initMap(newlat, newlon){
         var uluru = {lat: newlat, lng: newlon};
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 10,
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 6,
           center: uluru
         });
-//        var marker = new google.maps.Marker({
-//          position: uluru,
-//          map: map
-//        });
         $('#map').show();
+//        return map;
       }
 
 $(function(){
 
 var url ="/list-properties";
 city = window.location.href.split('?')[1].split('&')[0].split('=').pop();
+if(city.includes('%20')) city = city.replace('%20',' ');
+
+
 var reqDate = window.location.href.split('?')[1].split('&')[1].split('=').pop();
 $.ajax({
 				url: url,
