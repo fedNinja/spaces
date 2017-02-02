@@ -1,3 +1,4 @@
+
 .login-popup {
     display:none;
     position:fixed;
@@ -44,6 +45,9 @@ fieldset{
     margin-top:10px;
 }
 
+.errorMsg{
+    display:none;
+}
 #username, #password, .button-login{
     width: 350px;
     padding: 10px;
@@ -56,5 +60,5 @@ fieldset{
     margin-top:5px;
     cursor: pointer;
     border: 0;
-    background-color:#70a5cf;
+    background-color:#3D4C61;
 }

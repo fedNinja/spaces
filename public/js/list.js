@@ -76,17 +76,20 @@ var infoWindow = function(marker, map, title, address, url) {
 }
 
 var displayData = function(data) {
-	//console.log(data.length);
+	console.log(data.length);
+	console.log(data);
 	var numberOfRows = Math.ceil(data.length/4);
 	for(var i=0;i<numberOfRows;i++){
 		$('#listing').append('<div class="space-row" id="row'+(i+1)+'">');
 		if (data.length < 4*(i+1)) {
 			for (var j=4*i; j< data.length ; j++) {
-				$('#row'+(i+1)).append('<div class="space"><div class="space-img" style="background-image: url('+data[j].picture+')"></div><div class="space-desc">'+data[j].address+'</div></div></div>');
+				console.log(data[j].picture);
+				$('#row'+(i+1)).append('<div class="space"><div class="space-img" style="background-image: url(\'../uploads/'+data[j].picture[0]+'\')"></div><div class="space-desc">'+data[j].address+'</div></div></div>');
+//				$('#row'+(i+1)).append('<div class="space"><div class="space-img" style="background-image: url(\'../images/image1.jpg\')"></div><div class="space-desc">'+data[j].address+'</div></div></div>');
 			}
 		} else {
 			for (var j=4*i; j< 4*(i+1) ; j++) {
-				$('#row'+(i+1)).append('<div class="space"><div class="space-img" style="background-image: url('+data[j].picture+')"></div><div class="space-desc">'+data[j].address+'</div></div></div>');
+				$('#row'+(i+1)).append('<div class="space"><div class="space-img" style="background-image: url(\'../uploads/'+data[j].picture[0]+'\')"></div><div class="space-desc">'+data[j].address+'</div></div></div>');
 			}
 		}
 	}
@@ -104,7 +107,16 @@ function initMap(newlat, newlon){
       }
 
 $(function(){
+$(".includedContent").load("../html/login.html");
 
+/*$('a.login-modal').click(function() {
+    // Add the mask to body
+    $('body').append('<div id="mask"></div>');
+    $('#mask').fadeIn(300);
+    $('#login-box').css("display","block");
+    return false;
+
+	});*/
 var url ="/list-properties";
 city = window.location.href.split('?')[1].split('&')[0].split('=').pop();
 if(city.includes('%20')) city = city.replace('%20',' ');

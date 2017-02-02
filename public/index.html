@@ -12,41 +12,23 @@
   <link href="css/login.css" rel= "stylesheet">
 </head>
 <body>
-	<header class="heading">
+	<header class="heading row">
    <h1>Workable Spaces</h1>
    <ul class="col-3 navbar">
-    <li><a href='#login-box' class='login-modal'>Login</a></li>
-    <li><button type="submit">Signup</button></li>
+    <li id='login_link'><a href='#login-box' class='login-modal'>Login</a></li>
+    <li><button type="submit" onClick="location.href='./html/signup.html'">Signup</button></li>
   </ul>
 </header>
 <main>
-  <div id="login-box" class="login-popup">
-  <a href="#" class="close"><img src="../images/close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>
-    <form method="post" class="signin" action="#">
-      <fieldset class="login-textbox">
-          <h2>Welcome Back!</h2>
-          <input id="username" name="username" value="" type="text" autocomplete="on" placeholder="Username">       
-          <input id="password" name="password" value="" type="password" placeholder="Password">       
-        <button class="submit button-login" type="submit">Sign in</button>
-        <p class="login-links">
-          <a class="forgot" href="#">Forgot your password?</a>
-        </p> 
-        <p class="login-links">
-        Don't have an account?
-        <a class="signup-new" href="#"> Please sign up</a>
-        </p>       
-      </fieldset>
-    </form>
-  </div>
-
-
-
+<div class="includedContent"> </div>
+<img class="bg-img" src="images/pic3.jpg">
   <div class="row">
-   <img class="carousel-img" src="images/sf-goldengate.jpg">
+ 
+   <!--<img class="carousel-img" src="images/sf-goldengate.jpg">
    <img class="carousel-img" src="images/indiana.jpg">
-   <img class="carousel-img" src="images/nyc.jpg">
+   <img class="carousel-img" src="images/nyc.jpg">-->
    <div class="inner-container">
-     <h4>Discover your very own, beautiful on-demand workable space..</h4>
+     <h4>Discover your very own on-demand workable space..</h4>
      <form class="search-form" id="js-space-form">
       <select class="col-4 location" id="js-location" required="true">
         <option value=" ">Location</option>
@@ -59,13 +41,27 @@
     </form>
   </div>
 </div>
+</main>
 <div class="row">
-
-</div>
-</main>
-</main>
 <footer>
+<!--TODO: create footer-->
+  <!--<a href="#" class="contactLink footerTab"><span>Contact us</span></a>
+    <ul class="social-icons">
+      <li><a href="#" name="fb-icon" class="footerTab">
+        <span class="fa-stack fa-md">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+        </span>
+      </a></li>
+      <li><a href="#" name="twitter-icon" class="footerTab">
+        <i class="fa fa-twitter fa-color" aria-hidden="true"></i>
+      </a></li>
+      <li><a href="#" name="linked-in-icon" class="footerTab">
+        <i class="fa fa-linkedin fa-color" aria-hidden="true"></i>
+      </a></li>
+    </ul>-->
 </footer>
+</div>
 </body>
 <script
 src="https://code.jquery.com/jquery-3.1.1.min.js"

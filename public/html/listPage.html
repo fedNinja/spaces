@@ -7,19 +7,21 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css">
 	<link rel="stylesheet" href="../font/font-awesome-4.7.0/css/font-awesome.min.css">
-
 	<link rel="stylesheet" href="../css/main.css">
 	<link rel="stylesheet" href="../css/float-grid.css">
+	<link rel="stylesheet" href="../css/login.css">
 </head>
 <body>
 	<header class="heading">
 	<h1>Workable Spaces</h1>
 	<ul class="col-3 navbar">
-      <li><a href="#">Login</a></li>
+
+      <li><a href="#login-box" class="login-modal">Login</a></li>
       <li><button type="submit">Signup</button></li>
     </ul>
 	</header>
 	<main class="wrapper">
+	    <div class="includedContent"> </div>
 		<div class="row topbar">
 			<button type="submit" name="filter" class="advSearch">More filters</button>
 			<input type="text" name="startTime" placeholder="start time"><span><i class="icon-arrow-down"></i><span>
@@ -28,7 +30,7 @@
 			<input type="date" name="date-entry" id="js-date-selected" type="date">
 			<hr>
 		</div>
-		<!--<div class="leftPane">
+		<!--<div class="leftPane">f
 		</div>-->
 		<div class="col-9 centerPane" id="listing">
 		</div>
@@ -41,4 +43,5 @@
   crossorigin="anonymous"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC67VN01pF0or8Xdxk5uzuc3xVaKT8Z1zc&libraries=places"></script>
 <script src="../js/list.js"></script>
+<script src="../js/app.js"></script>
 </html>

@@ -5,8 +5,10 @@
 }
 
 html{
-	background-color:oldlace;
+   
+	background-color:#FCFCFC;
 }
+
 
 .heading{
 	text-align:center;
@@ -29,11 +31,17 @@ html{
 	padding-left:20px;
 }
 
-.navbar li button{
-	background-color: #70a5cf;
-	width: 80px;
-	height: 25px;
+.navbar li button, .submitBtn button, .advSearch{
+	width: 100px;
+	height: 35px;
 	border-radius: 5px;
+	/*background-color: #3498DB;*/
+	background-color: #3D4C61;
+	border-bottom: 5px solid #313C4D;
+	border-left:0;
+	border-top: 0;
+	border-right:0;
+	color:#fff;
 }
 
 .top-img, .bottom-img{
@@ -50,29 +58,32 @@ html{
 }
 h4{
 	color:#fff;
+	font-family:open-sans, roboto;
 	margin-bottom:20px;
+	font-size:20px;
 }
 
 .inner-container{
+	background-color:#53614c;
+	height:200px;
 	position: absolute; 
-	top:50%;
-	left:50%;
-	transform:translate(-50%,-50%);
+	top:55%;
+	left:28%;
+	transform:translate(-55%,-28%);
+	padding:20px;
 }
 
 .submitBtn button{
-	height: 30px;
-	border-radius: 10px;
-	background-color: #70a5cf;
-	box-shadow: none;
+	width:160px;
 }
 
 .advSearch{
 	float: left;
-	background-color: #70a5cf;
+	margin-top: -10px;
+	/*background-color: #70a5cf;
 	width: 94px;
 	height: 25px;
-	border-radius: 5px;
+	border-radius: 5px;*/
 }
 
 .location, .date-sel{
@@ -121,4 +132,59 @@ h4{
 	height:200px;
 	background-position: center center;
 	background-size:cover;
+}
+
+.space-desc-form{
+	text-align:center;
+	background: #f3f3f3;
+}
+
+.bottom{
+	margin-bottom:10px;
+}
+
+.bottom label {
+  display: inline-block;
+  width: 200px;
+  text-align: right;
+}​
+
+/*TODO: check for css to work*/
+#js-space-desc-form .bottom label .space-input{
+	width: 300px;
+    padding: 5px;
+}
+.addSpace{
+	background-color:#70a5cf;
+	width:100px;
+}
+
+.fa-circle{
+	color:#000;
+}
+.fa-color{
+	color:#000;
+}
+.social-icons{
+	margin-right:25px;
+	float:right;
+	list-style-type:none;
+}
+.social-icons li, .navbar li{
+	display:inline;
+	text-decoration:none;
+	padding:10px;
+}
+
+/*footer{
+	background-color:#c0c0c0;
+	height:30px;
+}*/
+
+.footerTab{
+	text-decoration: none;
+
+.contactLink{
+	margin-left:25px;
+	color:#000;
 }

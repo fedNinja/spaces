@@ -4,8 +4,10 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var parserJson = bodyParser.json();
 var Properties = require('./models/properties');
+var Users = require('./models/users');
 var Pictures = require('./models/pictures');
 var fileUpload = require('express-fileupload');
+var uuid = require('uuid/v4');
 var app = express();
 app.use(express.static('public'));
 app.use(fileUpload());
@@ -19,11 +21,16 @@ Properties.create({
   city:request.body.city,
   address:request.body.address,
   capacity:request.body.capacity,
+  rate:request.body.rate,
   available_date_from:request.body.available_date_from,
   available_date_to:request.body.available_date_to,
+  available_time_from:request.body.available_time_from,
+  available_time_to:request.body.available_time_to,
+  amenities:request.body.amenities,
   picture:request.body.picture
 },function(error,result){
   if(error){
+    console.log(error);
     return response.status(500).json({message:'server error'});
   }
   response.status(201).json(result);
@@ -64,52 +71,71 @@ app.post('/upload', function(req, res) {
  }
 // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
  sampleFile = req.files.sampleFile;
- var fileName=req.files.sampleFile.name;
+ //var fileName=req.files.sampleFile.name;
+ var fileName = uuid()+'.jpg';
  //Use the mv() method to place the file somewhere on your server
  //sampleFile.mv('uploads/filename.jpg', function(err) {
+  Properties.findOneAndUpdate({ '_id':'588ff4759fabfe36e4071045'}, {$push:{'picture':fileName}}, {safe:true,upsert: true},function(err){
+      if(err){
+        res.status(500).send(err);
+      }
+     });  
+  //return false;
   sampleFile.mv('uploads/'+fileName, function(err) {
    if (err) {
      res.status(500).send(err);
    }
-   else {
+   else {  
      res.send('File uploaded!');
    }
  });
 });
 
-
-
-/*******************************
-
-app.post('/upload', function(request, response){
-  var uploadedFile;
-  if(!request.files){
-    return response.send('problem with upload');
-    
-    //return response.status(500).json({message:'no uploaded file'});
-  }
-  uploadedFile=request.files.fileUpload;
-  var fileName=request.files.fileUpload.name;
-  uploadedFile.mv('./uploads/'+fileName, function(error){
-    if(error){
-  //return response.status(500).json({message:'no uploaded file'}); 
-    return response.send('problem with upload'); 
-  }
-  else{
-  return response.status(201).json({message:'file uploaded'});
-  }
-
-  });
-  
-
-});
-*************************/
-
-
 app.get('/owner', function(request, response){
   response.sendFile(__dirname + "/public/html/owner.html");
 });
 
+app.post('/signup', parserJson, function(request,response){
+Users.create({
+  firstName:request.body.firstName,
+  lastName:request.body.lastName,
+  address:request.body.address,
+  username:request.body.username,
+  password:request.body.password,
+  email:request.body.email
+},function(error,result){
+  if(error){
+    console.log(error);
+    return response.status(500).json({message:'server error'});
+  }
+  response.status(201).json(result);
+});
+
+});
+
+app.get('/users', function(req, res, next){
+Users.find(req.query, function(err, doc) {
+  console.log(doc);
+  if (err) return next(err);
+  res.send(doc);
+});
+});
+
+app.get('/users/:id', function (req, res, next) {
+  console.log("inside get by id", req.params.username);
+  Users.findById(req.params.username, function(err, doc) {
+    if (err) return next(err);
+    else {
+      res.send(doc);
+    }
+  });
+});
+
+
+app.get('/signup', function(request, response){
+  response.sendFile(__dirname + "/public/html/signup.html");
+
+});
 
 app.delete('/list-properties/:id', (req, res) => {
   Properties

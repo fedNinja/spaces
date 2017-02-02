@@ -1,0 +1,14 @@
+
+.button-signup {
+    width: 250px;
+	height: 40px;
+	border-radius: 5px;
+	/*background-color: #3498DB;
+	border-bottom: 5px solid #2980B9;*/
+	background-color:#3D4C61;
+	border-bottom: 5px solid #313C4D;
+	border-left:0;
+	border-top: 0;
+	border-right:0;
+	color:#fff;
+}

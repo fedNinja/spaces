@@ -1,5 +1,4 @@
 var myIndex = 0;
-carousel();
 var url ="/list-properties";
 
 function carousel() {
@@ -11,22 +10,24 @@ function carousel() {
 	myIndex++;
 	if (myIndex > x.length) {myIndex = 1}    
 		x[myIndex-1].style.display = "block";  
-    setTimeout(carousel, 2000); // Change image every 2 seconds
+    setTimeout(carousel, 15000); // Change image every 2 seconds
 }
 
 
 $(function(){
-
+	$(".includedContent").load("../html/login.html");
 	
 	/************Login form :start**************/
 	$('a.login-modal').click(function() {
     // Add the mask to body
+    console.log("Inside the log in modal");
     $('body').append('<div id="mask"></div>');
     $('#mask').fadeIn(300);
     $('#login-box').css("display","block");
     return false;
 
 	});
+	//carousel();
 
 	$(document).on('click', 'a.close, #mask', function() {
   		$('#mask , .login-popup').fadeOut(300 , function() {
@@ -47,7 +48,51 @@ $(function(){
 		window.location.href="./html/listPage.html?city="+cityName+"&date="+dateSelected;
 	});
 
+
 	/*************search form:End*************/
+
+//	$('#signin').submit(function(e){
+	$(document).on('submit', '#signin', function(e) {
+		e.preventDefault();
+		console.log("Into the login submit");
+		var name = $('#username').val();
+		var password = $('#password').val();
+		var requestData={
+			"username":name
+		};
+		$.ajax({
+     			url: '/users',
+     			type: 'GET',
+     			data: requestData,
+     			
+     			success: function(data){
+     				console.log("data",data);
+     				if(data.length==0) {
+     					console.log('username not found');
+     					$('#js-errorMsg').css('display','block');
+     					$('#js-errorMsg').css('color','red');
+     				}
+					else {
+						if(data[0].password==password) {
+							console.log("yay! user autentihcated");
+					  		$('#mask , .login-popup').fadeOut(300 , function() {
+					    	$('#mask').remove();  
+					    });
+					  		//$('#login_link').css('display','none');
+					  		$('#login_link').html("Welcome User!");
+					    } else {
+							console.log("Password incorrect");
+							$('#js-errorMsg').css('display','block');
+							$('#js-errorMsg').css('color','red');
+						}
+
+					};
+ 				},
+				error:function(){
+					console.log("Sorry, server error");
+    			}
+     		});
+	});
 
 	/*$('#owner-form').submit(function(e){
 		e.preventDefault();
