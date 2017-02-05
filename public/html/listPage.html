@@ -13,25 +13,42 @@
 </head>
 <body>
 	<header class="heading">
-	<h1>Workable Spaces</h1>
-	<ul class="col-3 navbar">
-
-      <li><a href="#login-box" class="login-modal">Login</a></li>
-      <li><button type="submit">Signup</button></li>
-    </ul>
+		<h1>Workable Spaces</h1>
+		<ul class="col-3 navbar">
+			<li id='login_link'><a href="#login-box" class="login-modal">Login</a></li>
+			<li id='signup_link'><button type="submit">Signup</button></li>
+		</ul>
 	</header>
 	<main class="wrapper">
-	    <div class="includedContent"> </div>
+		<div class="includedContent"> </div>
 		<div class="row topbar">
-			<button type="submit" name="filter" class="advSearch">More filters</button>
-			<input type="text" name="startTime" placeholder="start time"><span><i class="icon-arrow-down"></i><span>
-			<input type="text" name="endTime" placeholder="end time">
-			<input type="text" name="location" placeholder="location">
-			<input type="date" name="date-entry" id="js-date-selected" type="date">
-			<hr>
+			<select class="col-3 capacity" id="js-capacity" required="true">
+				<option value=" ">Attendees: Any</option>
+				<option value="l10">Less than 10</option>
+				<option value="l20">Between 11 and 20</option>
+				<option value="l30">Between 21 and 30</option>
+				<option value="l50">Between 31 and 50</option>
+				<option value="l100">Between 51 and 100</option>
+				<option value="m100">More than 100</option>
+			</select>
+			<div class="col-6 amenity">
+				<label for="amenities">Amenities</label>            
+				<input type="checkbox" name="amenities" value="kitchenette" />Kitchenette
+				<input type="checkbox" name="amenities" value="restroom" />Restroom
+				<input type="checkbox" name="amenities" value="flatscreen" />Flatscreen
+				<input type="checkbox" name="amenities" value="whiteboard" />Whiteboard
+			</div>
+			<select class="col-3 capacity" id="js-price" required="true">
+				<option value=" ">Price per hour: Any</option>
+				<option value="l50">Under 50</option>
+				<option value="l100">Between 50 and 100</option>
+				<option value="l150">Between 100 and 150</option>
+				<option value="l200">Between 150 and 200</option>
+				<option value="l250">Between 200 and 250</option>
+				<option value="m250">More than 250</option>
+			</select>
 		</div>
-		<!--<div class="leftPane">f
-		</div>-->
+		<hr>
 		<div class="col-9 centerPane" id="listing">
 		</div>
 		<div class="col-3 rightPane" id="map">
@@ -39,9 +56,9 @@
 	</main>
 </body>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"
-  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-  crossorigin="anonymous"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC67VN01pF0or8Xdxk5uzuc3xVaKT8Z1zc&libraries=places"></script>
+integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+crossorigin="anonymous"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC67VN01pF0or8Xdxk5uzuc3xVaKT8Z1zc&libraries=places"></script>
 <script src="../js/list.js"></script>
 <script src="../js/app.js"></script>
 </html>

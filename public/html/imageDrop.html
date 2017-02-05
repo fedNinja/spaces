@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+   <meta charset="utf-8" />
+   <!-- Mobile Metas -->
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+   
+   
+   <script
+ src="https://code.jquery.com/jquery-3.1.1.min.js"
+ integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+ crossorigin="anonymous"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.css" />
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.js"></script>
+   
+</head>
+<body>
+
+<h1>Drop Zone</h1>
+<div class="form-dropzone upload-form-dropzone">
+   <form action="/upload" type='POST' class='dropzone dz-square'></form>    
+</div>
+           
+<script type="application/javascript">
+   var dropzone = new Dropzone(".dropzone", { url: "/upload" });
+   dropzone.on("addedfile", function(file) {
+       console.log("file added", file);
+   });
+
+   dropzone.on("complete", function(e) {
+       if(e.status === "error") {
+           console.log("error", e);
+       }
+       else {
+           console.log("upload completed.....");
+       }
+   });
+   </script>
+ </body>
+</html>

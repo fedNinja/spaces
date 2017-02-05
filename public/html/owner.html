@@ -9,116 +9,118 @@
 	<link rel="stylesheet" href="font/font-awesome-4.7.0/css/font-awesome.min.css">
 	<link href="css/float-grid.css" rel= "stylesheet">
 	<link href="css/main.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.css" />
 </head>
 <body>
 	<header class="heading">
-	<h1>Workable Spaces</h1>
-	<ul class="col-3 navbar">
-      <li><a href="#">Login</a></li>
-      <li><button type="submit">Signup</button></li>
-    </ul>
+		<h1>Workable Spaces</h1>
+		<ul class="col-3 navbar">
+			<li><a href="#">Login</a></li>
+			<li><button type="submit">Signup</button></li>
+		</ul>
 	</header>
 	<main>
 		<form class="space-desc-form" id="js-space-desc-form">
-		<fieldset>
-		<div class="row">
-		<div class="col-9 bottom">
-		<label for="name">Name(as shown on screen)</label>
-		<input type="text" name="name" id="js-name" class="space-input" required=true>
-		</div>
-		</div>
-		<div class="row">
-		<div class="col-9 bottom">
-		<label for="address">Address</label>
-		<input type="text" name="address" id="js-address" class="space-input" required=true>
-		</div>
-		</div>
-		<div class="row">
-		<div class="col-9 bottom">
-		<label for="city">City</label>
-		<input type="text" name="city" id="js-city" class="space-input" required=true>
-		</div>
-		</div>
-		<div class="row">
-		<div class="col-9 bottom">
-		<label for="state">State</label>
-		<input type="text" name="state" id="js-state" required=true>
-		</div>
-		</div>
-		<div class="row">
-		<div class="col-9 bottom">
-		<label for="zipcode">ZipCode</label>
-		<input type="text" name="zipcode" id="js-zipcode" required=true>
-		</div>
-		</div>
-		<div class="row">
-		<div class="col-9 bottom">
-		<label for="dateFrom">Date Available From</label>
-		<input type="text" name="dateFrom" id="js-dateFrom" required=true>
-		</div>
-		</div>
-		<div class="row">
-		<div class="col-9 bottom">
-		<label for="dateTo">Date Available To</label>
-		<input type="text" name="dateTo" id="js-dateTo" required=true>
-		</div>
-		</div>
-		<div class="row">
-		<div class="col-9 bottom">
-		<label for="timeFrom">Time Available From</label>
-		<input type="text" name="timeFrom" id="js-timeFrom" required=true>
-		</div>
-		</div>
-		<div class="row">
-		<div class="col-9 bottom">
-		<label for="timeTo">Time Available To</label>
-		<input type="text" name="timeTo" id="js-timeTo" required=true>
-		</div>
-		</div>
-		<div class="row">
-		<div class="col-9 bottom">
-		<label for="rate">Rate per hour</label>
-		<input type="text" name="rate" id="js-rate" required=true>
-		</div>
-		</div>
-		<div class="row">
-		<div class="col-9 bottom">
-		<label for="capacity">capacity</label>
-		<input type="text" name="capacity" id="js-capacity" required=true>
-		</div>
-		</div>
-		<div class="row">
-		<div class="col-9 bottom">
-		<label for="amenities">Amenities</label>
-		<input type="checkbox" name="amenities" value="whiteboard" id ="js-chbox1"> whiteboard
-  		<input type="checkbox" name="amenities" value="kitchenette" id ="js-chbox2"> Kitchenette
-  		<input type="checkbox" name="amenities" value="flatscreen" id ="js-chbox3"> FlatScreen
-  		<input type="checkbox" name="amenities" value="restroom" id ="js-chbox4"> Restroom
-  		<p><input type="submit" value="addSpace" class="addSpace"/></p>
-  		</div>
-		</div>
-		<div class="row">
-		<div class="col-9">
-		</fieldset>
-		</form>
-	   <div class="row">
-	  	<form ref='uploadForm'
-         id='uploadForm'
-         action='/upload'
-         method='post'
-         encType="multipart/form-data">
-           <input type="file" name="sampleFile" id="sampleFile" />
-           <input type='submit' value='Upload!' />
-           <span id = "status"></span>
-       </form>
-    </div>
-	</main>
-	<footer>
-	</footer>
-</body>
-<script
-  src="https://code.jquery.com/jquery-3.1.1.min.js"
-  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-  crossorigin="anonymous"></script>
-<script src="../js/addProperty.js"></script>
-</html>
+			<fieldset>
+				<div class="row">
+					<div class="col-9 bottom">
+						<label for="name">Name(as shown on screen)</label>
+						<input type="text" name="name" id="js-name" class="space-input" required=true>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-9 bottom">
+						<label for="address">Address</label>
+						<input type="text" name="address" id="js-address" class="space-input" required=true>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-9 bottom">
+						<label for="city">City</label>
+						<input type="text" name="city" id="js-city" class="space-input" required=true>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-9 bottom">
+						<label for="state">State</label>
+						<input type="text" name="state" id="js-state" required=true>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-9 bottom">
+						<label for="zipcode">ZipCode</label>
+						<input type="text" name="zipcode" id="js-zipcode" required=true>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-9 bottom">
+						<label for="dateFrom">Date Available From</label>
+						<input type="text" name="dateFrom" id="js-dateFrom" required=true>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-9 bottom">
+						<label for="dateTo">Date Available To</label>
+						<input type="text" name="dateTo" id="js-dateTo" required=true>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-9 bottom">
+						<label for="timeFrom">Time Available From</label>
+						<input type="text" name="timeFrom" id="js-timeFrom" required=true>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-9 bottom">
+						<label for="timeTo">Time Available To</label>
+						<input type="text" name="timeTo" id="js-timeTo" required=true>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-9 bottom">
+						<label for="rate">Rate per hour</label>
+						<input type="text" name="rate" id="js-rate" required=true>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-9 bottom">
+						<label for="capacity">capacity</label>
+						<input type="text" name="capacity" id="js-capacity" required=true>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-9 bottom">
+						<label for="amenities">Amenities</label>
+						<input type="checkbox" name="amenities" value="whiteboard" id ="js-chbox1"> whiteboard
+						<input type="checkbox" name="amenities" value="kitchenette" id ="js-chbox2"> Kitchenette
+						<input type="checkbox" name="amenities" value="flatscreen" id ="js-chbox3"> FlatScreen
+						<input type="checkbox" name="amenities" value="restroom" id ="js-chbox4"> Restroom
+						<!--    <input type="file" name="sampleFile" id="sampleFile" />-->
+						<p><input type="submit" value="addSpace" class="addSpace"/></p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-9">
+					</fieldset>
+				</form>
+				<form id="uploadForm" enctype="multipart/form-data" action="/upload"
+     				method="post">
+					<input type="file" name="sampleFile" id="sampleFile"/>
+					<input type="submit" value="Upload Image" name="submit">
+					<input type="hidden" id="testHidden" name="userid"/>   
+				</form>
+				<div class="form-dropzone upload-form-dropzone">
+					<form action="/upload" type='POST' class='dropzone dz-square'></form>    
+				</div>
+			</main>
+			<footer>
+			</footer>
+		</body>
+		<script
+		src="https://code.jquery.com/jquery-3.1.1.min.js"
+		integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+		crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.js"></script>
+		<script src="../js/addProperty.js"></script>
+
+		</html>

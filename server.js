@@ -8,34 +8,73 @@ var Users = require('./models/users');
 var Pictures = require('./models/pictures');
 var fileUpload = require('express-fileupload');
 var uuid = require('uuid/v4');
+const multer = require('multer');
 var app = express();
 app.use(express.static('public'));
 app.use(fileUpload());
 const {PORT, DATABASE_URL} = require('./config');
 
 
-
-app.post('/list-properties', parserJson, function(request,response){
-Properties.create({
-  name:request.body.name,
-  city:request.body.city,
-  address:request.body.address,
-  capacity:request.body.capacity,
-  rate:request.body.rate,
-  available_date_from:request.body.available_date_from,
-  available_date_to:request.body.available_date_to,
-  available_time_from:request.body.available_time_from,
-  available_time_to:request.body.available_time_to,
-  amenities:request.body.amenities,
-  picture:request.body.picture
-},function(error,result){
-  if(error){
-    console.log(error);
-    return response.status(500).json({message:'server error'});
+/*var storage =   multer.diskStorage({
+  destination: function (req, file, callback) {
+    callback(null, './public/uploads');
+  },
+  filename: function (req, file, callback) {
+    var sampleFile = req.files.sampleFile;
+    var fileName = uuid()+'.jpg';
+    callback(null, file.filename);
   }
-  response.status(201).json(result);
 });
 
+var upload = multer({ storage : storage}).single('propertyPhoto');
+
+app.get('/owner', function(request, response){
+  response.sendFile(__dirname + "/public/html/owner.html");
+});
+
+app.post('/owner',function(req,res){
+    upload(req,res,function(err) {
+        if(err) {
+            return res.end("Error uploading file.");
+        }
+        res.end("File is uploaded");
+    });
+});*/
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+const storage = multer.diskStorage({
+ destination: function (req, file, cb) {
+   cb(null, __dirname + "/uploads/");
+ },
+ filename: function (req, file, cb) {
+     cb(null, file.originalname)
+ }
+});
+const upload = multer({ storage: storage });
+
+
+
+app.post('/list-properties', parserJson, function(request,response){ 
+    Properties.create({
+      name:request.body.name,
+      city:request.body.city,
+      address:request.body.address,
+      capacity:request.body.capacity,
+      rate:request.body.rate,
+      owner:request.body.userid,
+      available_date_from:request.body.available_date_from,
+      available_date_to:request.body.available_date_to,
+      available_time_from:request.body.available_time_from,
+      available_time_to:request.body.available_time_to,
+      amenities:request.body.amenities
+    },function(error,result){
+      if(error){
+        console.log(error);
+        return response.status(500).json({message:'server error'});
+      }
+      response.status(201).json(result);
+    });
 });
 
 
@@ -61,38 +100,57 @@ app.get('/list-properties/:id', function (req, res, next) {
 
 
 
-app.post('/upload', function(req, res) {
- console.log(req)
+app.post('/upload',upload.single('file'), function(req, res) {
  var sampleFile;
+ //var fn = "public/uploads/" + req.file.originalname;
+  // console.log("uploaded ", fn);
+  console.log("test.....");
+  var fn = __dirname + "/uploads/" + req.file.originalname; 
+  console.log("uploaded ", fn);
+   res.status(200).send(JSON.stringify({status: "SUCCESS"}));
 
+
+
+
+/*
+ var userid = req.body.userid;
+console.log(req);
  if (!req.files) {
    res.send('No files were uploaded.');
    return;
  }
 // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
  sampleFile = req.files.sampleFile;
- //var fileName=req.files.sampleFile.name;
  var fileName = uuid()+'.jpg';
- //Use the mv() method to place the file somewhere on your server
- //sampleFile.mv('uploads/filename.jpg', function(err) {
-  Properties.findOneAndUpdate({ '_id':'588ff4759fabfe36e4071045'}, {$push:{'picture':fileName}}, {safe:true,upsert: true},function(err){
+  console.log(userid);
+
+//var userid = mongoose.Types.ObjectId(userid);
+  Properties.findOneAndUpdate({'_id':userid}, {$push:{'picture':fileName}}, {safe:true,upsert: true},function(err){
       if(err){
         res.status(500).send(err);
       }
      });  
   //return false;
-  sampleFile.mv('uploads/'+fileName, function(err) {
+  sampleFile.mv('./public/uploads/'+fileName, function(err) {
    if (err) {
      res.status(500).send(err);
    }
-   else {  
-     res.send('File uploaded!');
+   else { 
+   // console.log("before append", res);
+     // res.append("filename", fileName); 
+     // console.log("after append", res);
+     // res.redirect('./owner');
+      res.send('File uploaded!');
    }
- });
+ });*/
 });
 
 app.get('/owner', function(request, response){
   response.sendFile(__dirname + "/public/html/owner.html");
+});
+
+app.get('/details', function(request, response){
+  response.sendFile(__dirname + "/public/html/details.html");
 });
 
 app.post('/signup', parserJson, function(request,response){
@@ -137,6 +195,11 @@ app.get('/signup', function(request, response){
 
 });
 
+app.get('/fileUpload', function(request, response){
+  response.sendFile(__dirname + "/public/html/imageDrop.html");
+
+});
+
 app.delete('/list-properties/:id', (req, res) => {
   Properties
     .findByIdAndRemove(req.params.id)
@@ -171,8 +234,6 @@ function runServer(databaseUrl=DATABASE_URL, port=PORT) {
     });
   });
 }
-
-// `closeServer` function is here in original code
 
 if (require.main === module) {
   runServer().catch(err => console.error(err));

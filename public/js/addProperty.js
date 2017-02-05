@@ -1,45 +1,82 @@
 
 $(function(){
 
+/*
+	if (sessionStorage.length>0) {
+		console.log(sessionStorage.getItem("userid"));
+		console.log(sessionStorage.getItem("username"));
+		$('#login_link').html("Welcome "+sessionStorage.getItem("username")+"!");
+		$('#signup_link').html("<a href='#' onclick='logout()'>Log Out</a>");
+	}
 
-	$('#js-space-desc-form').submit(function(e){
-		e.preventDefault();
-		var name = $('#js-name').val();
-		var address = $('#js-address').val();
-		var city = $('#js-city').val();
-		var state = $('#js-state').val();
-		var zipcode = $('#js-zipcode').val();
-		var dateFrom = $('#js-dateFrom').val();
-		var dateTo = $('#js-dateTo').val();
-		var timeFrom = $('#js-timeFrom').val();
-		var timeTo = $('#js-timeTo').val();
-		var rate = $('#js-rate').val();
-		var capacity = $('#js-capacity').val();
+	enctype =  "multipart/form-data"
+     		  action =  "/upload"
+     		method =  "post"
+     		*/
+//var a = $(document).getResponseHeader('filename');
+//console.log(a);
+
+/*$('#uploadForm').submit(function(e){
+	e.preventDefault();
+	var sampleFile = $('#sampleFile');
+	var files = sampleFile[0].files[0];
+	console.log($('#sampleFile'));
+	console.log (sampleFile);
+	console.log (files);
+	//console.log($('#sampleFile'));
+	$.ajax({
+		url: '/upload',
+		type:'POST',
+		'content-Type':'multipart/form-data',
+
+		data: {
+			picture:files
+		},
+		success:function(data){
+			console.log(data);
+		},
+		error:function(){
+			console.log("Sorry, server error");
+		}
+	});	
+
+});*/
+
+var dropzone = new Dropzone(".dropzone", { url: "/upload" });
+   dropzone.on("addedfile", function(file) {
+       console.log("file added", file);
+   });
+
+   dropzone.on("complete", function(e) {
+       if(e.status === "error") {
+           console.log("error", e);
+       }
+       else {
+           console.log("upload completed.....");
+       }
+   });
+
+
+var userId = sessionStorage.getItem("userid");
+$('#testHidden').val(userId);
+$('#js-space-desc-form').submit(function(e){
+	e.preventDefault();
+	var name = $('#js-name').val();
+	var address = $('#js-address').val();
+	var city = $('#js-city').val();
+	var state = $('#js-state').val();
+	var zipcode = $('#js-zipcode').val();
+	var dateFrom = $('#js-dateFrom').val();
+	var dateTo = $('#js-dateTo').val();
+	var timeFrom = $('#js-timeFrom').val();
+	var timeTo = $('#js-timeTo').val();
+	var rate = $('#js-rate').val();
+	var capacity = $('#js-capacity').val();
 		var amenities = [];
 		if ($('#js-chbox1').is(':checked')) amenities.push($('#js-chbox1').val());
 		if ($('#js-chbox2').is(':checked')) amenities.push($('#js-chbox2').val());
 		if ($('#js-chbox3').is(':checked')) amenities.push($('#js-chbox3').val());
 		if ($('#js-chbox4').is(':checked')) amenities.push($('#js-chbox4').val());
-/*		var startTime = new Date();
-		var endTime = new Date();
-		var parts_Start = startTime.match(/(\d+):(\d+) (AM|PM)/);
-		var parts_End = endTime.match(/(\d+):(\d+) (AM|PM)/);
-		if (parts_Start) {
-    	var hours = parseInt(parts_Start[1]),
-        minutes = parseInt(parts_Start[2]),
-        tt = parts_Start[3];
-    	if (tt === 'PM' && hours < 12) hours += 12;
-    	startTime.setHours(hours, minutes, 0, 0);
-		}
-
-		if (parts_End) {
-    	var hours = parseInt(parts_End[1]),
-        minutes = parseInt(parts_End[2]),
-        tt = parts_End[3];
-    	if (tt === 'PM' && hours < 12) hours += 12;
-    	endTime.setHours(hours, minutes, 0, 0);
-		}
-*/		
 		console.log("time from",timeFrom);
 		console.log("time from",timeTo);
 		var url ="/list-properties";
@@ -53,18 +90,19 @@ $(function(){
 				capacity:Number(capacity),
 				rate: Number(rate),
 				amenities:amenities,
+				owner:userId,
 				available_date_from: dateFrom,
 				available_date_to: dateTo,
 				available_time_from: timeFrom,
 				available_time_to: timeTo
-				},
-				success:function(data){
+			},
+			success:function(data){
 				console.log(data);
-				},
-				error:function(){
-					console.log("Sorry, server error");
-				}
-			});	
+			},
+			error:function(){
+				console.log("Sorry, server error");
+			}
+		});	
 
 	});
 

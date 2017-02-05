@@ -1,7 +1,7 @@
-var myIndex = 0;
+//var myIndex = 0;
 var url ="/list-properties";
 
-function carousel() {
+/*function carousel() {
 	var i;
 	var x = document.getElementsByClassName("carousel-img");
 	for (i = 0; i < x.length; i++) {
@@ -11,10 +11,22 @@ function carousel() {
 	if (myIndex > x.length) {myIndex = 1}    
 		x[myIndex-1].style.display = "block";  
     setTimeout(carousel, 15000); // Change image every 2 seconds
+}*/
+
+function logout(){
+	console.log("I am in logout");
+sessionStorage.clear();
+window.location.href='/';
 }
 
-
 $(function(){
+
+	if (sessionStorage.length > 0) {
+		$('#login_link').html("Welcome "+sessionStorage.getItem("username")+"!");
+		$('#signup_link').html("<a href='#' onclick='logout()'>Log Out</a>");
+    }
+
+
 	$(".includedContent").load("../html/login.html");
 	
 	/************Login form :start**************/
@@ -51,6 +63,9 @@ $(function(){
 
 	/*************search form:End*************/
 
+
+	
+
 //	$('#signin').submit(function(e){
 	$(document).on('submit', '#signin', function(e) {
 		e.preventDefault();
@@ -79,7 +94,12 @@ $(function(){
 					    	$('#mask').remove();  
 					    });
 					  		//$('#login_link').css('display','none');
-					  		$('#login_link').html("Welcome User!");
+					  		$('#login_link').html("Welcome "+data[0].firstName+"!");
+					  		$('#signup_link').html("<a href='#' onclick='logout()'>Log Out</a>");
+					  		if (window.sessionStorage) {
+            					sessionStorage.setItem("userid", data[0]._id);
+            					sessionStorage.setItem("username", data[0].firstName);
+        					}
 					    } else {
 							console.log("Password incorrect");
 							$('#js-errorMsg').css('display','block');

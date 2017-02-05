@@ -4,6 +4,12 @@ var map;
 var bounds = new google.maps.LatLngBounds();
 var iw;
 
+function logout(){
+	console.log("I am in logout");
+sessionStorage.clear();
+window.location.href='/';
+}
+
 var processData = function(data, reqDate) {
 	var dispData =  checkAvailableDates(data,reqDate);
 	if(!dispData || dispData.length <1) console.log("no matching record found");
@@ -84,12 +90,11 @@ var displayData = function(data) {
 		if (data.length < 4*(i+1)) {
 			for (var j=4*i; j< data.length ; j++) {
 				console.log(data[j].picture);
-				$('#row'+(i+1)).append('<div class="space"><div class="space-img" style="background-image: url(\'../uploads/'+data[j].picture[0]+'\')"></div><div class="space-desc">'+data[j].address+'</div></div></div>');
-//				$('#row'+(i+1)).append('<div class="space"><div class="space-img" style="background-image: url(\'../images/image1.jpg\')"></div><div class="space-desc">'+data[j].address+'</div></div></div>');
+				$('#row'+(i+1)).append('<div class="space"><a href=\"../html/details.html?id='+data[j]._id+'\"><div class="space-img" style="background-image: url(\'../uploads/'+data[j].picture[0]+'\')"></div><div class="space-desc">'+data[j].address+'</div></div></a></div>');
 			}
 		} else {
 			for (var j=4*i; j< 4*(i+1) ; j++) {
-				$('#row'+(i+1)).append('<div class="space"><div class="space-img" style="background-image: url(\'../uploads/'+data[j].picture[0]+'\')"></div><div class="space-desc">'+data[j].address+'</div></div></div>');
+				$('#row'+(i+1)).append('<div class="space"><a href=\"../html/details.html?id='+data[j]._id+'\"><div class="space-img" style="background-image: url(\'../uploads/'+data[j].picture[0]+'\')"></div><div class="space-desc">'+data[j].address+'</div></div></a></div>');
 			}
 		}
 	}
@@ -107,16 +112,16 @@ function initMap(newlat, newlon){
       }
 
 $(function(){
+
+	if (sessionStorage.length>0) {
+		console.log(sessionStorage.getItem("userid"));
+		console.log(sessionStorage.getItem("username"));
+		$('#login_link').html("Welcome "+sessionStorage.getItem("username")+"!");
+		$('#signup_link').html("<a href='#' onclick='logout()'>Log Out</a>");
+	}
+
 $(".includedContent").load("../html/login.html");
 
-/*$('a.login-modal').click(function() {
-    // Add the mask to body
-    $('body').append('<div id="mask"></div>');
-    $('#mask').fadeIn(300);
-    $('#login-box').css("display","block");
-    return false;
-
-	});*/
 var url ="/list-properties";
 city = window.location.href.split('?')[1].split('&')[0].split('=').pop();
 if(city.includes('%20')) city = city.replace('%20',' ');
@@ -131,7 +136,6 @@ $.ajax({
 
 				},
 				success:function(data){
-				//console.log(data);
 				if(!data) console.log('no spaces found');
 				else processData(data,reqDate);
 				},
@@ -139,4 +143,18 @@ $.ajax({
 					console.log("Sorry, server error");
 				}
 			});	
+
+$('#js-capacity').change(function(){
+	var capacity = $('#js-capacity').find(":selected").val();
+});
+
+$('#js-price').change(function(){
+	var rate = $('#js-price').find(":selected").val();
+});
+
+$('input:checkbox').change(function (){
+	var name=$(this).val();
+	var value= $(this).is(':checked');
+});
+
 });

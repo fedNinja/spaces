@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>listing of the properties</title>
+	<meta name="description" content="listing spaces">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css">
+	<link rel="stylesheet" href="../font/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="../css/main.css">
+	<link rel="stylesheet" href="../css/float-grid.css">
+	<link rel="stylesheet" href="../css/login.css">
+	<link rel="stylesheet" href="../css/details.css">
+</head>
+<body>
+	<header class="heading">
+		<h1>Workable Spaces</h1>
+		<ul class="col-3 navbar">
+			<li id='login_link'><a href="#login-box" class="login-modal">Login</a></li>
+			<li id='signup_link'><button type="submit">Signup</button></li>
+		</ul>
+	</header>
+	<main class="wrapper">
+		<div class="includedContent"> </div>
+		<div class="row" id= "js-property-img">
+		</div>
+		<div class="row">
+		<div class="col-9 detailsPane" id="js-details-space">
+		</div>
+		<div class="col-3 bookSpace" id="js-book-space">
+		</div>
+		</div>
+	</main>
+</body>
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC67VN01pF0or8Xdxk5uzuc3xVaKT8Z1zc&libraries=places"></script>
+<script src="../js/details.js"></script>
+<!--<script src="../js/list.js"></script>-->
+<script src="../js/app.js"></script>
+</html>
