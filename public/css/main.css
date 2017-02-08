@@ -25,9 +25,16 @@ footer{
 
 .navbar{
 	float: right !important;
-	margin-top: -52px;
-	margin-right: 40px;
+	/*margin-top: -52px;
+	margin-right: 40px;*/
 }
+
+.homeLink{
+	text-decoration: none;
+	cursor:pointer;
+	color:#000;
+}
+
 
 .navbar li a{
 	text-decoration:none;
@@ -41,7 +48,7 @@ footer{
 }
 
 .navbar li button, .submitBtn button, .advSearch{
-	width: 100px;
+	/*width: 100px;*/
 	height: 35px;
 	border-radius: 5px;
 	background-color: #3D4C61;
@@ -78,14 +85,41 @@ h4{
 	top:55%;
 	left:28%;
 	transform:translate(-55%,-28%);
-	padding:20px;
+	/*padding:20px;*/
 }
 
 .submitBtn button{
-	width:160px;
+	/*width:120px;*/
+	/*margin-top: -2px;*/
 }
 
-.location, .capacity{
+.headerPadding{
+	padding-top:20px;
+}
+
+.btn-book-space{
+	text-align: center;
+}
+
+/*.btnPad{
+	margin-top:-8px;
+}*/
+.login-pad{
+	margin-top:20px;
+}
+.sign-details{
+	margin-top:12px;
+}
+
+.form-book-space{
+	margin-top:20px;
+}
+.space-input{
+	height: 30px;
+    width: 250px;
+}
+
+.location, .capacity, .startTime, .endTime{
 background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat right #fff;
 -webkit-appearance: none;
 }
@@ -98,7 +132,7 @@ background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16
 	border-radius:3px;
 }
 
-.location, .date-sel{
+.location, .date-sel, .startTime, .endTime{
 	height: 30px;
 	border-radius:3px;
 	border:0;
@@ -119,6 +153,13 @@ background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16
 
 .rightPane{
 	width:30%;
+}
+
+.center{
+	text-align:center;
+	font-size:25px;
+	color:blue;
+	margin-top:20px;
 }
 
 .centerPane, .rightPane{
@@ -160,8 +201,12 @@ background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16
     background-color: #c0c0c0;
 }
 
+.bottom{
+	padding:10px;
+}
+
 .bottom label {
-  display: inline-block;
+  /*display: inline-block;*/
   text-align: right;
 }​
 
@@ -173,6 +218,11 @@ background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16
 .addSpace{
 	background-color:#70a5cf;
 	width:100px;
+	margin: 0 auto;
+}
+
+.space-details{
+	display:none;
 }
 
 .navbar li{
@@ -217,7 +267,7 @@ background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16
 }
 
 .social-icons li a i:hover {
-	background:#000;
+	background:#add1ea;
 }
 .contactLink{
 	float: left;

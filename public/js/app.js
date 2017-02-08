@@ -1,17 +1,4 @@
-//var myIndex = 0;
 var url ="/list-properties";
-
-/*function carousel() {
-	var i;
-	var x = document.getElementsByClassName("carousel-img");
-	for (i = 0; i < x.length; i++) {
-		x[i].style.display = "none";  
-	}
-	myIndex++;
-	if (myIndex > x.length) {myIndex = 1}    
-		x[myIndex-1].style.display = "block";  
-    setTimeout(carousel, 15000); // Change image every 2 seconds
-}*/
 
 function logout(){
 	console.log("I am in logout");
@@ -24,7 +11,9 @@ $(function(){
 	if (sessionStorage.length > 0) {
 		$('#login_link').html("Welcome "+sessionStorage.getItem("username")+"!");
 		$('#signup_link').html("<a href='#' onclick='logout()'>Log Out</a>");
+		$('#js-add-Space').css('display','block');
     }
+
 
 
 	$(".includedContent").load("../html/login.html");
@@ -96,9 +85,11 @@ $(function(){
 					  		//$('#login_link').css('display','none');
 					  		$('#login_link').html("Welcome "+data[0].firstName+"!");
 					  		$('#signup_link').html("<a href='#' onclick='logout()'>Log Out</a>");
+					  		$('#js-add-Space').css('display','block');
 					  		if (window.sessionStorage) {
             					sessionStorage.setItem("userid", data[0]._id);
             					sessionStorage.setItem("username", data[0].firstName);
+            					$('#js-add-Space').css('display','block');
         					}
 					    } else {
 							console.log("Password incorrect");
@@ -113,36 +104,5 @@ $(function(){
     			}
      		});
 	});
-
-	/*$('#owner-form').submit(function(e){
-		e.preventDefault();
-		var files=$('#fileUpload')[0].files[0];
-		var form=$('#owner-form')[0];
-		console.log(files);
-		//if(files.length>0){
-			var formData = new FormData(form);
-			// loop through all the selected files
-			//for (var i = 0; i < files.length; i++) {
-				//var file = files[i];
-
-     		// add the files to formData object for the data payload
-     		//formData.append('uploads', files);
-     		console.log("form data", formData);
-     		$.ajax({
-     			url: '/upload',
-     			type: 'POST',
-     			data: formData,
-     			processData: false,
-     			contentType: false,
-     			success: function(data){
-     				console.log(data);
-     			}
-     		});
-     	//}
-     //}
-
- });*/
-
-
 
 });

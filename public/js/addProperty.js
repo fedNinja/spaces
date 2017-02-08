@@ -1,61 +1,16 @@
 
-$(function(){
+function logout(){
+sessionStorage.clear();
+window.location.href='/';
+}
 
-/*
-	if (sessionStorage.length>0) {
-		console.log(sessionStorage.getItem("userid"));
-		console.log(sessionStorage.getItem("username"));
+
+$(function(){
+if (sessionStorage.length > 0) {
 		$('#login_link').html("Welcome "+sessionStorage.getItem("username")+"!");
 		$('#signup_link').html("<a href='#' onclick='logout()'>Log Out</a>");
-	}
-
-	enctype =  "multipart/form-data"
-     		  action =  "/upload"
-     		method =  "post"
-     		*/
-//var a = $(document).getResponseHeader('filename');
-//console.log(a);
-
-/*$('#uploadForm').submit(function(e){
-	e.preventDefault();
-	var sampleFile = $('#sampleFile');
-	var files = sampleFile[0].files[0];
-	console.log($('#sampleFile'));
-	console.log (sampleFile);
-	console.log (files);
-	//console.log($('#sampleFile'));
-	$.ajax({
-		url: '/upload',
-		type:'POST',
-		'content-Type':'multipart/form-data',
-
-		data: {
-			picture:files
-		},
-		success:function(data){
-			console.log(data);
-		},
-		error:function(){
-			console.log("Sorry, server error");
-		}
-	});	
-
-});*/
-
-var dropzone = new Dropzone(".dropzone", { url: "/upload" });
-   dropzone.on("addedfile", function(file) {
-       console.log("file added", file);
-   });
-
-   dropzone.on("complete", function(e) {
-       if(e.status === "error") {
-           console.log("error", e);
-       }
-       else {
-           console.log("upload completed.....");
-       }
-   });
-
+		$('#js-add-Space').css('display','block');
+    }
 
 var userId = sessionStorage.getItem("userid");
 $('#testHidden').val(userId);
@@ -98,6 +53,8 @@ $('#js-space-desc-form').submit(function(e){
 			},
 			success:function(data){
 				console.log(data);
+				console.log(data._id);
+				window.location.href = '../html/imageDrop.html?propertyid='+data._id;
 			},
 			error:function(){
 				console.log("Sorry, server error");

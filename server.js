@@ -5,50 +5,23 @@ var bodyParser = require('body-parser');
 var parserJson = bodyParser.json();
 var Properties = require('./models/properties');
 var Users = require('./models/users');
-var Pictures = require('./models/pictures');
-var fileUpload = require('express-fileupload');
 var uuid = require('uuid/v4');
 const multer = require('multer');
 var app = express();
 app.use(express.static('public'));
-app.use(fileUpload());
 const {PORT, DATABASE_URL} = require('./config');
 
-
-/*var storage =   multer.diskStorage({
-  destination: function (req, file, callback) {
-    callback(null, './public/uploads');
-  },
-  filename: function (req, file, callback) {
-    var sampleFile = req.files.sampleFile;
-    var fileName = uuid()+'.jpg';
-    callback(null, file.filename);
-  }
-});
-
-var upload = multer({ storage : storage}).single('propertyPhoto');
-
-app.get('/owner', function(request, response){
-  response.sendFile(__dirname + "/public/html/owner.html");
-});
-
-app.post('/owner',function(req,res){
-    upload(req,res,function(err) {
-        if(err) {
-            return res.end("Error uploading file.");
-        }
-        res.end("File is uploaded");
-    });
-});*/
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 const storage = multer.diskStorage({
  destination: function (req, file, cb) {
-   cb(null, __dirname + "/uploads/");
+   cb(null, "./public/uploads/");
  },
- filename: function (req, file, cb) {
-     cb(null, file.originalname)
+ filename: function (req, file, cb, propertyId) {
+    var fileName = uuid()+'.jpg';
+    saveFileToDB(fileName, req.body.propertyId);
+     cb(null, fileName);
  }
 });
 const upload = multer({ storage: storage });
@@ -98,51 +71,18 @@ app.get('/list-properties/:id', function (req, res, next) {
   });
 });
 
-
-
-app.post('/upload',upload.single('file'), function(req, res) {
- var sampleFile;
- //var fn = "public/uploads/" + req.file.originalname;
-  // console.log("uploaded ", fn);
-  console.log("test.....");
-  var fn = __dirname + "/uploads/" + req.file.originalname; 
-  console.log("uploaded ", fn);
-   res.status(200).send(JSON.stringify({status: "SUCCESS"}));
-
-
-
-
-/*
- var userid = req.body.userid;
-console.log(req);
- if (!req.files) {
-   res.send('No files were uploaded.');
-   return;
- }
-// The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
- sampleFile = req.files.sampleFile;
- var fileName = uuid()+'.jpg';
-  console.log(userid);
-
-//var userid = mongoose.Types.ObjectId(userid);
-  Properties.findOneAndUpdate({'_id':userid}, {$push:{'picture':fileName}}, {safe:true,upsert: true},function(err){
+function saveFileToDB(fileName,propertyId){
+  var propertyId = mongoose.Types.ObjectId(propertyId);
+  Properties.findOneAndUpdate({'_id':propertyId}, {$push:{'picture':fileName}}, {safe:true,upsert: true},function(err){
       if(err){
         res.status(500).send(err);
       }
      });  
   //return false;
-  sampleFile.mv('./public/uploads/'+fileName, function(err) {
-   if (err) {
-     res.status(500).send(err);
-   }
-   else { 
-   // console.log("before append", res);
-     // res.append("filename", fileName); 
-     // console.log("after append", res);
-     // res.redirect('./owner');
-      res.send('File uploaded!');
-   }
- });*/
+}
+
+app.post('/upload',upload.single('file', null, saveFileToDB), function(req, res) {
+   res.status(200).send(JSON.stringify({status: "SUCCESS"}));
 });
 
 app.get('/owner', function(request, response){
@@ -151,6 +91,10 @@ app.get('/owner', function(request, response){
 
 app.get('/details', function(request, response){
   response.sendFile(__dirname + "/public/html/details.html");
+});
+
+app.get('/reviews', function(request, response){
+  response.sendFile(__dirname + "/public/html/review.html");
 });
 
 app.post('/signup', parserJson, function(request,response){

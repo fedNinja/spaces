@@ -13,63 +13,63 @@
 </head>
 <body>
 	<header class="heading">
-	<h1>Workable Spaces</h1>
+	<a href="/" class="homeLink"> <h1>Workable Spaces</h1> </a>
 	</header>
 	<main>
 		<form class="space-desc-form" id="js-space-signup-form">
 		<fieldset>
 		<div class="row">
 		<div class="col-9 bottom">
-		<label for="fname">First Name</label>
-		<input type="text" name="fname" id="js-fname" class="space-input" required=true>
+		<label for="fname" class="col-6">First Name</label>
+		<input type="text" name="fname" id="js-fname" class="space-input col-6" required=true>
 		</div>
 		</div>
 		<div class="row">
 		<div class="col-9 bottom">
-		<label for="lname">Last Name</label>
-		<input type="text" name="lname" id="js-lname" class="space-input" required=true>
+		<label for="lname" class="col-6">Last Name</label>
+		<input type="text" name="lname" id="js-lname" class="space-input col-6" required=true>
 		</div>
 		</div>
 		<div class="row">
 		<div class="col-9 bottom">
-		<label for="uaddress">Address</label>
-		<input type="text" name="uaddress" id="js-user-address" class="space-input" required=true>
+		<label for="uaddress" class="col-6">Address</label>
+		<input type="text" name="uaddress" id="js-user-address" class="space-input col-6" required=true>
 		</div>
 		</div>
 		<div class="row">
 		<div class="col-9 bottom">
-		<label for="ucity">City</label>
-		<input type="text" name="ucity" id="js-user-city" class="space-input" required=true>
+		<label for="ucity" class="col-6">City</label>
+		<input type="text" name="ucity" id="js-user-city" class="space-input col-6" required=true>
 		</div>
 		</div>
 		<div class="row">
 		<div class="col-9 bottom">
-		<label for="ustate">State</label>
-		<input type="text" name="ustate" id="js-user-state" required=true>
+		<label for="ustate" class="col-6">State</label>
+		<input type="text" name="ustate" id="js-user-state" class="space-input col-6" required=true>
 		</div>
 		</div>
 		<div class="row">
 		<div class="col-9 bottom">
-		<label for="uzipcode">ZipCode</label>
-		<input type="text" name="zipcode" id="js-user-zipcode" required=true>
+		<label for="uzipcode" class="col-6">ZipCode</label>
+		<input type="text" name="zipcode" id="js-user-zipcode" class="space-input col-6" required=true>
 		</div>
 		</div>
 		<div class="row">
 		<div class="col-9 bottom">
-		<label for="uname">Username</label>
-		<input type="text" name="uname" id="js-username" required=true>
+		<label for="uname" class="col-6">Username</label>
+		<input type="text" name="uname" id="js-username" class="space-input col-6" required=true>
 		</div>
 		</div>
 		<div class="row">
 		<div class="col-9 bottom">
-		<label for="pwd">Password</label>
-		<input type="password" name="pwd" id="js-password" required=true>
+		<label for="pwd" class="col-6">Password</label>
+		<input type="password" name="pwd" id="js-password" class="space-input col-6" required=true>
 		</div>
 		</div>
 		<div class="row">
 		<div class="col-9 bottom">
-		<label for="email">Email</label>
-		<input type="text" name="email" id="js-email" required=true>
+		<label for="email" class="col-6">Email</label>
+		<input type="text" name="email" id="js-email" class="space-input col-6" required=true>
 		</div>
 		</div>
 		<button class="button-signup" type="submit">Sign up</button>
@@ -77,6 +77,18 @@
 		</form>
 		</main>
 	<footer>
+	<div class="row footer-content">
+  <div>
+  <a href="#" class="contactLink footerTab">Contact us</a>
+  </div>
+    <div>
+      <ul class="social-icons">
+        <li><a href="http://facebook.com/"><i class="fa fa-facebook"></i></a></li>
+        <li><a href="http://linkedin.com/"><i class="fa fa-linkedin"></i></a></li>
+        <li><a href="http://twitter.com/"><i class="fa fa-twitter"></i></a></li>
+      </ul>
+        </div>
+    </div>
 	</footer>
 </body>
 <script

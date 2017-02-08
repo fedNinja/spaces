@@ -13,31 +13,34 @@
 </head>
 <body>
 	<header class="heading row">
-   <h1>Workable Spaces</h1>
+   <h1 class="col-9">Workable Spaces</h1>
    <ul class="col-3 navbar">
-    <li id='login_link'><a href='#login-box' class='login-modal'>Login</a></li>
-    <li id='signup_link'><button type="submit" onClick="location.href='./html/signup.html'">Signup</button></li>
+    <li class="col-4" id='login_link'><a href='#login-box' class='login-modal col-12 login-pad'>Login</a></li>
+    <li class="col-4" id='signup_link'><button class="col-12 sign-details" type="submit" onClick="location.href='./html/signup.html'">Signup</button></li>
+    <li class="col-4" id='addSpace_link'><button id="js-add-Space" class="col-12 space-details" type="submit" onClick="location.href='./html/owner.html'">Add Space</button></li>
   </ul>
 </header>
 <main>
 <div class="includedContent"> </div>
 <img class="bg-img" src="images/pic3.jpg">
   <div class="row">
- 
-   <!--<img class="carousel-img" src="images/sf-goldengate.jpg">
-   <img class="carousel-img" src="images/indiana.jpg">
-   <img class="carousel-img" src="images/nyc.jpg">-->
-   <div class="inner-container">
-     <h4>Discover your very own on-demand workable space..</h4>
-     <form class="search-form" id="js-space-form">
-      <select class="col-4 location" id="js-location" required="true">
+   <div class="inner-container col-6">
+     <h4 class="col-12 headerPadding">Discover your very own on-demand workable space..</h4>
+     <form class="col-12 search-form" id="js-space-form">
+     <span class="col-4">
+      <select class="col-12 location" id="js-location" required="true">
         <option value=" ">Location</option>
         <option value="San Francisco">San Francisco</option>
         <option value="Indiana">Indiana</option>
         <option value="New York">New York</option>
+         <option value="fremont">Fremont</option>
       </select>
-      <input type="date" class="col-4 date-sel" name="date-entry" id="js-date-selected" type="date" required="true">
-      <div class="submitBtn col-4"><button type="submit">Find my space</button></div>
+      </span>
+      <span class="col-4">
+      <input type="date" class="col-12 date-sel" name="date-entry" id="js-date-selected" type="date" required="true">
+      </span>
+     <span class="submitBtn col-4"><button type="submit" class="col-12">Find my space</button></span>
+
     </form>
   </div>
 </div>
@@ -58,8 +61,8 @@
 </footer>
 </body>
 <script
-src="https://code.jquery.com/jquery-3.1.1.min.js"
-integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-crossorigin="anonymous"></script>
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
 <script src="./js/app.js"></script>
 </html>

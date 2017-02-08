@@ -16,3 +16,38 @@
 	background-color:#c0c0c0;
 	height:200px;
 }
+
+.imgDimension{
+	width:100%;
+	height:350px;
+}
+
+.signup-pad{
+	margin-top: -6px;
+}
+
+.padTop{
+	padding:3px;
+}
+
+.bookSpace{
+	padding: 12px;
+}
+
+.verticalLine{
+	border-left:2px solid gray;
+}
+
+.total-price{
+	width:100%;
+	display:none;
+	/*background-color:red;*/
+}
+.date-sel{
+	max-width:100%;
+}
+
+.startTime, .endTime{
+	width:100%;
+	text-indent:30px;
+}

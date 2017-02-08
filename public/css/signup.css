@@ -10,3 +10,9 @@
 	border-right:0;
 	color:#fff;
 }
+
+.homeLink{
+	text-decoration: none;
+	cursor:pointer;
+	color:#000;
+}
