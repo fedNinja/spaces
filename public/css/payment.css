@@ -1,0 +1,52 @@
+.cc-wrapper{
+	position:relative;
+}
+
+.cc-wrapper .fa-credit-card{
+	color:#666;
+	top:6px;
+	left:10px;
+	position:absolute;
+}
+
+.payment{
+	text-align:center;
+	height:auto;
+}
+
+.textAlign{
+float: none;
+margin-right: 250px;
+}
+.type, .exp_month, .exp_year{
+	background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat right #fff;
+    -webkit-appearance: none;
+}
+
+.bottom span{
+	text-align: right;
+}
+
+.elemAlign{
+	padding:5px;
+}
+
+.inputStyle{
+	border-radius:3px;
+	border:1px solid gray;
+	}
+
+.submitBtn{
+	height: 35px;
+	border-radius: 5px;
+	background-color: #3D4C61;
+	border-bottom: 5px solid #313C4D;
+	border-left:0;
+	border-top: 0;
+	border-right:0;
+	color:#fff;
+}
+.align{
+	margin: auto;
+	width:100px;
+}

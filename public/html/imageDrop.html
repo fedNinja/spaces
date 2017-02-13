@@ -11,9 +11,10 @@
  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
  crossorigin="anonymous"></script>
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.css" />
+   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
    <link rel="stylesheet" href="../css/main.css">
    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.js"></script>
-   
+   <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 </head>
 <body>
 
@@ -35,11 +36,24 @@
    });
 
    dropzone.on("complete", function(e) {
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "positionClass": "toast-top-full-width",
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+              }
        if(e.status === "error") {
            console.log("error", e);
+           toastr.error('sorry', 'there is an error loading pictures!')
        }
        else {
            console.log("upload completed.....");
+           toastr.success('Yay! Your pictures have uploaded');
        }
    });
    $.urlParam = function(name){

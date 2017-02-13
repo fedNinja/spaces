@@ -24,7 +24,7 @@ footer{
 }
 
 .navbar{
-	float: right !important;
+	/*float: right !important;*/
 	/*margin-top: -52px;
 	margin-right: 40px;*/
 }
@@ -58,19 +58,19 @@ footer{
 	border-right:0;
 	color:#fff;
 }
+#addProperty{
+	color:#2e5cb7;
+}
 
 .top-img, .bottom-img{
 	width:100%;
 	height:200px;
 }
-.bg-img, .carousel-img{
+.bg-img{
 	width:100%;
-	height:550px;
+	height:auto;
 }
 
-.carousel-img{
-	display:none;
-}
 h4{
 	color:#fff;
 	font-family:open-sans, roboto;
@@ -216,12 +216,11 @@ background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16
     padding: 5px;
 }
 .addSpace{
-	background-color:#70a5cf;
 	width:100px;
 	margin: 0 auto;
 }
 
-.space-details{
+.spaceDetails{
 	display:none;
 }
 

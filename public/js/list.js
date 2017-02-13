@@ -120,7 +120,7 @@ $(function(){
 	if (sessionStorage.length>0) {
 		$('#login_link').html("Welcome "+sessionStorage.getItem("username")+"!");
 		$('#signup_link').html("<a href='#' onclick='logout()'>Log Out</a>");
-		$('#js-add-Space').css('display','block');
+		$('#addProperty').css('display','block');
 	}
 
 $(".includedContent").load("../html/login.html");

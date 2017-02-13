@@ -32,8 +32,6 @@ $('#js-space-desc-form').submit(function(e){
 		if ($('#js-chbox2').is(':checked')) amenities.push($('#js-chbox2').val());
 		if ($('#js-chbox3').is(':checked')) amenities.push($('#js-chbox3').val());
 		if ($('#js-chbox4').is(':checked')) amenities.push($('#js-chbox4').val());
-		console.log("time from",timeFrom);
-		console.log("time from",timeTo);
 		var url ="/list-properties";
 		$.ajax({
 			url: url,
@@ -44,7 +42,7 @@ $('#js-space-desc-form').submit(function(e){
 				address:address+" "+city+" "+state+" "+zipcode,
 				capacity:Number(capacity),
 				rate: Number(rate),
-				amenities:amenities,
+				amenities:JSON.stringify(amenities),
 				owner:userId,
 				available_date_from: dateFrom,
 				available_date_to: dateTo,
@@ -52,8 +50,6 @@ $('#js-space-desc-form').submit(function(e){
 				available_time_to: timeTo
 			},
 			success:function(data){
-				console.log(data);
-				console.log(data._id);
 				window.location.href = '../html/imageDrop.html?propertyid='+data._id;
 			},
 			error:function(){

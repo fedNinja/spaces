@@ -11,7 +11,7 @@ $(function(){
 	if (sessionStorage.length > 0) {
 		$('#login_link').html("Welcome "+sessionStorage.getItem("username")+"!");
 		$('#signup_link').html("<a href='#' onclick='logout()'>Log Out</a>");
-		$('#js-add-Space').css('display','block');
+		$('#addProperty').css('display','block');
     }
 
 
@@ -78,21 +78,18 @@ $(function(){
      				}
 					else {
 						if(data[0].password==password) {
-							console.log("yay! user autentihcated");
-					  		$('#mask , .login-popup').fadeOut(300 , function() {
+							$('#mask , .login-popup').fadeOut(300 , function() {
 					    	$('#mask').remove();  
 					    });
-					  		//$('#login_link').css('display','none');
 					  		$('#login_link').html("Welcome "+data[0].firstName+"!");
+					  		console.log("hi hi hi hi....");
 					  		$('#signup_link').html("<a href='#' onclick='logout()'>Log Out</a>");
-					  		$('#js-add-Space').css('display','block');
+					  		$('#addProperty').css('display','block');
 					  		if (window.sessionStorage) {
             					sessionStorage.setItem("userid", data[0]._id);
             					sessionStorage.setItem("username", data[0].firstName);
-            					$('#js-add-Space').css('display','block');
         					}
 					    } else {
-							console.log("Password incorrect");
 							$('#js-errorMsg').css('display','block');
 							$('#js-errorMsg').css('color','red');
 						}

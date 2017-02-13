@@ -40,6 +40,7 @@ var populateTimings= function(data){ //1:00 PM
 var displayData = function(data){
 	console.log("data", data);
 	rate = data[0].rate;
+	console.log(data[0]);
 	if(!data[0].rate) {
 		data[0].rate=0;
 	}
@@ -90,9 +91,6 @@ var geocodeAddress = function(address) {
 				position: results[0].geometry.location,
 				address: address
 			})
-			//infoWindow(marker, map, address);
-			//bounds.extend(marker.getPosition());
-			//map.fitBounds(bounds);
 		}
 	});
 }
@@ -100,6 +98,7 @@ var geocodeAddress = function(address) {
 
 
 $(function(){
+	var total;
 	var url = "/list-properties";
 	var spaceId = window.location.href.split('?')[1].split('=').pop();
 	console.log(spaceId);
@@ -127,28 +126,6 @@ $(function(){
 		}
 	});	
 
-	/*$('#js-startTime').on("change", function() {
-		var initTime = $('#js-startTime').find(':selected').val();
-		var startTime = initTime.split(' ')[0].split(':')[0];
-		var startAMPM = initTime.split(' ')[1];
-		var startTimeCounter = Number(startTime);
-		var arr = [];    
-		$("#js-endTime option").each(function () {    
-    		var finalTime = $(this).text();
-    		var endTime = finalTime.split(' ')[0].split(':')[0];
-			var endAMPM = finalTime.split(' ')[1];
-			var endTimeCounter = Number(endTime);
-			if(startAMPM != endAMPM) {
-				arr.push($(this).text());
-			} else {
-				if (startTimeCounter != 12) && (endTimeCounter-startTimeCounter+12>0) {
-
-				}
-			}
-    		arr.push($(this).text());    
-		});    
-	});*/
-
 	$('#js-book-space').on("click",'#js-book-submit',function(e){
 		e.preventDefault();
 		console.log(rate);
@@ -170,9 +147,27 @@ $(function(){
 			totalTime = endTimeCounter-startTimeCounter;
 			console.log("we are in same time", totalTime);
 		}
-		var total = rate*totalTime + .05*(rate*totalTime);
+		total = rate*totalTime + .05*(rate*totalTime);
 		$('#js-total-price').append('<b><p class="col-12">Price</p></b><hr><p class="col-12"><span class="col-6">$'+rate+'.00 '+'x'+totalTime+'hours</span><span class="col-6">$'+(rate*totalTime)+'.00</span></p><p><span class="col-6">Processing Fee(5%)</span><span class="col-6">$'+.05*(rate*totalTime)+'.00</span></p><hr><p class="col-12"><span class="col-6"><b>Total</b></span><span class="col-6">$'+total+'.00</span></p>');
 		$('.submitBtn').html('<button type="submit" id="js-reserve">Reserve</button>');
 	});
+
+	$('#js-book-space').on("click",'#js-reserve',function(e){
+		e.preventDefault();
+		var dateSelected = $('#js-date-booked').val();
+		var startTime = $('#js-startTime').val();
+		var endTime = $('#js-endTime').val();
+		if (sessionStorage.length >0) {
+			sessionStorage.setItem("propertyid", spaceId);
+			sessionStorage.setItem("paymentAmount", total);
+			sessionStorage.setItem("rDate", dateSelected);
+			sessionStorage.setItem("startTime", startTime);
+			sessionStorage.setItem("endTime", endTime);
+		    window.location.href='../html/payment.html';
+
+
+	}
+
+	});	
 
 });

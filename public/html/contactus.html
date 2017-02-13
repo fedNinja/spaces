@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<form class="space-desc-form" id="js-space-desc-form">
+	<head>
+		<title>Contact Us</title>
+		<meta name="description" content="workable spaces">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css">
+		<link rel="stylesheet" href="../font/font-awesome-4.7.0/css/font-awesome.min.css">
+		  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+		<link href="../css/float-grid.css" rel= "stylesheet">
+		<link href="../css/main.css" rel="stylesheet">
+		<link href="../css/payment.css" rel="stylesheet">
+	</head>
+	<body>
+		<header>
+			<a href ="/" class="homeLink"><h1 class="heading row">Workable Spaces</h1></a>
+		</header>
+		<main>
+			<form id="js-contactForm" class="payment">
+				<fieldset>
+					</div>
+					<div class="row">
+						<div class="col-9 bottom">
+						<label for="name" class="col-6 elemAlign">Name</label>
+						<input type="text" class="col-6 elemAlign inputStyle" name="personName" id="js-name" required="true">
+					</div>
+					</div>
+					<div class="row">
+					<div class="col-9 bottom">
+						<label for= "email" class="col-6 elemAlign">Email</label>
+						<input type="email" class="col-6 elemAlign inputStyle" name="email" id="js-email" placeholder="john@gmail.com" required="true">
+					</div>
+					</div>
+					<div class="row">
+					<div class="col-9 bottom">
+						<label for="comment" class="col-6 elemAlign">Comments</label>
+						<textarea name="comment" class="col-6" rows="4" cols="50" id="js-comment"></textarea>
+					</div>
+					</div>
+					<div class="row">
+						<div class="align submitBtn">
+						<button type="submit" class="col-12" id="contactus">Submit</button>
+					</div>
+					</div>
+				</fieldset>
+			</form>
+		</main>
+	</body>
+	<script
+  	src="https://code.jquery.com/jquery-3.1.1.min.js"
+  	integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  	crossorigin="anonymous"></script>
+  	<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+	<script src="../js/contact.js"></script>
+</html>

@@ -5,8 +5,11 @@ var bodyParser = require('body-parser');
 var parserJson = bodyParser.json();
 var Properties = require('./models/properties');
 var Users = require('./models/users');
+var Reservations = require('./models/reservations');
 var uuid = require('uuid/v4');
 const multer = require('multer');
+const nodemailer = require('nodemailer');
+
 var app = express();
 app.use(express.static('public'));
 const {PORT, DATABASE_URL} = require('./config');
@@ -28,6 +31,32 @@ const upload = multer({ storage: storage });
 
 
 
+
+// create reusable transporter object using the default SMTP transport
+let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'contactus.workablespaces@gmail.com',
+        pass: 'forWorkableSpaces'
+    }
+});
+
+app.post('/contactus',parserJson, function(request, response){
+  let mailOptions = {
+    from: '"contactus 👻" <contactus.workablespaces@gmail.com>', // sender address
+    to: request.body.email, // list of receivers
+    subject: 'Hello', // Subject line
+    html: '<b>Hello '+ request.body.name+',<b><p> Thanks for contacting us. This is an automated email. One of our valuable team member will contact you within 24 hours.</p><p>Best wishes, <br>Team workable spaces.</p>' // plain text body
+};
+transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+        return response.status(500).json({message:'server error'});;
+    }
+    console.log('Message %s sent: %s', info.messageId, info.response);
+    return response.status(201).json(info.response);
+});
+});
+
 app.post('/list-properties', parserJson, function(request,response){ 
     Properties.create({
       name:request.body.name,
@@ -40,7 +69,7 @@ app.post('/list-properties', parserJson, function(request,response){
       available_date_to:request.body.available_date_to,
       available_time_from:request.body.available_time_from,
       available_time_to:request.body.available_time_to,
-      amenities:request.body.amenities
+      amenities:JSON.parse(request.body.amenities)
     },function(error,result){
       if(error){
         console.log(error);
@@ -115,6 +144,31 @@ Users.create({
 
 });
 
+app.post('/reservations', parserJson, function(request,response){
+  Reservations.create({
+    propertyId:request.body.propId,
+    reservation_date:request.body.dateReserved,
+    reservation_starttime:request.body.bookStTime,
+    reservation_endtime:request.body.bookEndtime,
+    reserved_by:request.body.userId
+  }, function(error, result){
+    if(error){
+    console.log(error);
+    return response.status(500).json({message:'server error'});
+  }
+  response.status(201).json(result);
+  });
+});
+
+app.get('/reservations', function(request, response, next){
+  Reservations.find(request.query, function(err, doc){
+     console.log(doc);
+  if (err) return next(err);
+  response.send(doc);
+  });
+
+});
+
 app.get('/users', function(req, res, next){
 Users.find(req.query, function(err, doc) {
   console.log(doc);
@@ -142,6 +196,10 @@ app.get('/signup', function(request, response){
 app.get('/fileUpload', function(request, response){
   response.sendFile(__dirname + "/public/html/imageDrop.html");
 
+});
+
+app.get('/payment', function(request, response){
+  response.sendFile(__dirname + "/public/html/payment.html");
 });
 
 app.delete('/list-properties/:id', (req, res) => {
