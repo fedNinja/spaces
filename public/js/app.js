@@ -1,7 +1,6 @@
 var url ="/list-properties";
 
 function logout(){
-	console.log("I am in logout");
 sessionStorage.clear();
 window.location.href='/';
 }
@@ -14,21 +13,17 @@ $(function(){
 		$('#addProperty').css('display','block');
     }
 
-
-
 	$(".includedContent").load("../html/login.html");
 	
 	/************Login form :start**************/
 	$('a.login-modal').click(function() {
     // Add the mask to body
-    console.log("Inside the log in modal");
     $('body').append('<div id="mask"></div>');
     $('#mask').fadeIn(300);
     $('#login-box').css("display","block");
     return false;
 
 	});
-	//carousel();
 
 	$(document).on('click', 'a.close, #mask', function() {
   		$('#mask , .login-popup').fadeOut(300 , function() {
@@ -53,9 +48,6 @@ $(function(){
 	/*************search form:End*************/
 
 
-	
-
-//	$('#signin').submit(function(e){
 	$(document).on('submit', '#signin', function(e) {
 		e.preventDefault();
 		console.log("Into the login submit");
@@ -70,9 +62,7 @@ $(function(){
      			data: requestData,
      			
      			success: function(data){
-     				console.log("data",data);
      				if(data.length==0) {
-     					console.log('username not found');
      					$('#js-errorMsg').css('display','block');
      					$('#js-errorMsg').css('color','red');
      				}
@@ -82,7 +72,6 @@ $(function(){
 					    	$('#mask').remove();  
 					    });
 					  		$('#login_link').html("Welcome "+data[0].firstName+"!");
-					  		console.log("hi hi hi hi....");
 					  		$('#signup_link').html("<a href='#' onclick='logout()'>Log Out</a>");
 					  		$('#addProperty').css('display','block');
 					  		if (window.sessionStorage) {

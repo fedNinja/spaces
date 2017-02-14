@@ -38,47 +38,45 @@ var populateTimings= function(data){ //1:00 PM
 }
 
 var displayData = function(data){
-	console.log("data", data);
 	rate = data[0].rate;
-	console.log(data[0]);
 	if(!data[0].rate) {
 		data[0].rate=0;
 	}
 	
 	$("#js-property-img").append('<div class="col-12"><img class="imgDimension" src="../uploads/'+data[0].picture[0]+'"></div>');
 	$("#js-details-space").append('<h2 class="space-desc-details">'+data[0].address+" "+data[0].city+'</h2><p><h3 class="space-desc-details">About the space</h3></p><hr><p class="space-desc-details">'+data[0].name+'. This space is conveniently located at '+data[0].city+'.Spacious and comfortable place to hold your meeting or event.</p>'+
-		                   '<h3 class="space-desc-details"><p>Amenities</p></h3><hr><p class="space-desc-details">'+data[0].amenities+'</p><h3 class="space-desc-details">Location Map</h3><hr><div id="propertyMap" class="mapDiv"></div><h3 class="space-desc-details">Rules</h3><hr><p class="space-desc-details">All booking start and end time are inclusive of set time and end time.</p>');
+		'<h3 class="space-desc-details"><p>Amenities</p></h3><hr><p class="space-desc-details">'+data[0].amenities+'</p><h3 class="space-desc-details">Location Map</h3><hr><div id="propertyMap" class="mapDiv"></div><h3 class="space-desc-details">Rules</h3><hr><p class="space-desc-details">All booking start and end time are inclusive of set time and end time.</p>');
 	$("#js-book-space").append('<span class="col-6 padTop">Total Attendees:'+data[0].capacity+'</span><span class="col-6 padTop verticalLine">$'+data[0].rate+' Per hour</span><hr>'
-							+'<div class="col-12 form-book-space" id="js-book-form"><span class="col-4"><input type="date" class="date-sel" name="date-entry" id="js-date-booked" type="date" required="true"></span>'
-							+'<span class="col-4"><select class="startTime" id="js-startTime" required="true"></select></span>'
-							+'<span class="col-4"><select class="endTime" id="js-endTime" required="true"></select></span>'
-							+'<div class="col-12 total-price" id="js-total-price"> </div>'
-							+'<div class="submitBtn btn-book-space col-12"><button type="submit" id="js-book-submit">Book Space</button></div></div>'    			
+		+'<div class="col-12 form-book-space" id="js-book-form"><span class="col-4"><input type="date" class="date-sel" name="date-entry" id="js-date-booked" type="date" required="true"></span>'
+		+'<span class="col-4"><select class="startTime" id="js-startTime" required="true"></select></span>'
+		+'<span class="col-4"><select class="endTime" id="js-endTime" required="true"></select></span>'
+		+'<div class="col-12 total-price" id="js-total-price"> </div>'
+		+'<div class="submitBtn btn-book-space col-12"><button type="submit" id="js-book-submit">Book Space</button></div></div>'    			
 		);
-    populateTimings(data);
+	populateTimings(data);
 	getLocation(data[0].address+" "+data[0].city);
 }
 
 function initMap(newlat, newlon){
-        var uluru = {lat: newlat, lng: newlon};
-        map = new google.maps.Map(document.getElementById('propertyMap'), {
-          zoom: 15,
-          center: uluru
-        });
-        $('#propertyMap').show();
+	var uluru = {lat: newlat, lng: newlon};
+	map = new google.maps.Map(document.getElementById('propertyMap'), {
+		zoom: 15,
+		center: uluru
+	});
+	$('#propertyMap').show();
 //        return map;
-      }
+}
 
 var getLocation = function(address) {
 	geocoder = new google.maps.Geocoder();
 	var latitude, longitude;
 	geocoder.geocode({'address': address}, function(res, status) {
 		if (status == google.maps.GeocoderStatus.OK) {
-    		latitude = res[0].geometry.location.lat();
-	   		longitude = res[0].geometry.location.lng();
-	   		initMap(latitude, longitude);
-	   			geocodeAddress(address);
-    	} 
+			latitude = res[0].geometry.location.lat();
+			longitude = res[0].geometry.location.lng();
+			initMap(latitude, longitude);
+			geocodeAddress(address);
+		} 
 	}); 
 }
 
@@ -101,7 +99,6 @@ $(function(){
 	var total;
 	var url = "/list-properties";
 	var spaceId = window.location.href.split('?')[1].split('=').pop();
-	console.log(spaceId);
 
 	if (sessionStorage.length>0) {
 		console.log(sessionStorage.getItem("userid"));
@@ -128,7 +125,6 @@ $(function(){
 
 	$('#js-book-space').on("click",'#js-book-submit',function(e){
 		e.preventDefault();
-		console.log(rate);
 		$('#js-total-price').css('display','block');
 		var totalTime;
 		var initTime = $('#js-startTime').find(':selected').val();
@@ -141,11 +137,9 @@ $(function(){
 		var endTimeCounter = Number(endTime);
 		if((startAMPM != endAMPM) || (startTimeCounter == 12)) {
 			totalTime = endTimeCounter-startTimeCounter+12;
-			console.log("we are in different time", totalTime);
 		}
 		else{
 			totalTime = endTimeCounter-startTimeCounter;
-			console.log("we are in same time", totalTime);
 		}
 		total = rate*totalTime + .05*(rate*totalTime);
 		$('#js-total-price').append('<b><p class="col-12">Price</p></b><hr><p class="col-12"><span class="col-6">$'+rate+'.00 '+'x'+totalTime+'hours</span><span class="col-6">$'+(rate*totalTime)+'.00</span></p><p><span class="col-6">Processing Fee(5%)</span><span class="col-6">$'+.05*(rate*totalTime)+'.00</span></p><hr><p class="col-12"><span class="col-6"><b>Total</b></span><span class="col-6">$'+total+'.00</span></p>');
@@ -163,10 +157,9 @@ $(function(){
 			sessionStorage.setItem("rDate", dateSelected);
 			sessionStorage.setItem("startTime", startTime);
 			sessionStorage.setItem("endTime", endTime);
-		    window.location.href='../html/payment.html';
+			window.location.href='../html/payment.html';
 
-
-	}
+		}
 
 	});	
 

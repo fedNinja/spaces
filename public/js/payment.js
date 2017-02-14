@@ -16,7 +16,6 @@ $(function(){
 		var url='/reservations';
 	$('#js-paymentForm').submit(function(e){
 		e.preventDefault();
-		console.log("I am here");
 		$.ajax({
 		url: url,
         type:'POST',
@@ -29,7 +28,6 @@ $(function(){
             userName:userName
         },
         success:function(data){
-            console.log("Yay, your space is reserved!");
             toastr.options = {
                 "closeButton": false,
                 "debug": false,

@@ -6,13 +6,11 @@ var iw;
 var listData;
 
 function logout(){
-	console.log("I am in logout");
 sessionStorage.clear();
 window.location.href='/';
 }
 
 var processData = function(data, reqDate) {
-	console.log("inside processData");
 	var dispData =  checkAvailableDates(data,reqDate);
 	if(!dispData || dispData.length <1) console.log("no matching record found");
 	else {
@@ -84,16 +82,12 @@ var infoWindow = function(marker, map, title, address, url) {
 }
 
 var displayData = function(data) {
-	console.log("inside displayData");
-	console.log(data.length);
-	console.log(data);
 	var numberOfRows = Math.ceil(data.length/4);
 	for(var i=0;i<numberOfRows;i++){
 		if(i==0) $('#listing').html('<div class="space-row" id="row'+(i+1)+'">');
 		else $('#listing').append('<div class="space-row" id="row'+(i+1)+'">');
 		if (data.length < 4*(i+1)) {
 			for (var j=4*i; j< data.length ; j++) {
-				console.log(data[j].picture);
 				$('#row'+(i+1)).append('<div class="space"><a href=\"../html/details.html?id='+data[j]._id+'\"><div class="space-img" style="background-image: url(\'../uploads/'+data[j].picture[0]+'\')"></div><div class="space-desc">'+data[j].address+'</div></div></a></div>');
 			}
 		} else {
@@ -150,37 +144,29 @@ $.ajax({
 
 $('#js-capacity').change(function(){
 	var capacity = $('#js-capacity').find(":selected").val();
-	console.log("capacity is "+capacity);
 });
 
 $('#js-price').change(function(){
 	var rate = $('#js-price').find(":selected").val();
-	console.log("price is "+rate);
 	var dispData = [];
 	listData.forEach(function(record) {
 		switch (rate) {
 			case "l50":
-				console.log("Price under 50");
 				if (record.rate <= 50) dispData.push(record);
 				break;
 			case "l100":
-				console.log("Price between 51 and 100");
 				if ((record.rate > 50) && (record.rate <=100)) dispData.push(record);
 				break;
 			case "l150":
-				console.log("Price between 101 and 150");
 				if ((record.rate > 100) && (record.rate <=150)) dispData.push(record);
 				break;
 			case "l200":
-				console.log("Price between 151 and 200");
 				if ((record.rate > 150) && (record.rate <=200)) dispData.push(record);
 				break;
 			case "l250":
-				console.log("Price between 101 and 150");
 				if ((record.rate > 200) && (record.rate <=250)) dispData.push(record);
 				break;
 			case "m250":
-				console.log("Price more than 250");
 				if (record.rate > 250) dispData.push(record);
 				break;
 			default:
@@ -188,14 +174,12 @@ $('#js-price').change(function(){
 				break;
 		}
 	});
-	console.log(dispData);
 	processData(dispData, reqDate);
 });
 
 $('input:checkbox').change(function (){
 	var name=$(this).val();
 	var value= $(this).is(':checked');
-	console.log("amenities is "+name);
 });
 
 });

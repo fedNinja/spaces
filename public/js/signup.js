@@ -1,7 +1,5 @@
 
 $(function(){
-
-
 	$('#js-space-signup-form').submit(function(e){
 		e.preventDefault();
 		var fname = $('#js-fname').val();
