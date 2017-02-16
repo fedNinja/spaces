@@ -88,11 +88,11 @@ var displayData = function(data) {
 		else $('#listing').append('<div class="space-row" id="row'+(i+1)+'">');
 		if (data.length < 4*(i+1)) {
 			for (var j=4*i; j< data.length ; j++) {
-				$('#row'+(i+1)).append('<div class="space"><a href=\"../html/details.html?id='+data[j]._id+'\"><div class="space-img" style="background-image: url(\'../uploads/'+data[j].picture[0]+'\')"></div><div class="space-desc">'+data[j].address+'</div></div></a></div>');
+				$('#row'+(i+1)).append('<div class="space"><a class="spaceAddress" href=\"../html/details.html?id='+data[j]._id+'\"><div class="space-img" style="background-image: url(\'../uploads/'+data[j].picture[0]+'\')"></div><div class="space-desc">'+data[j].address+'</div></div></a></div>');
 			}
 		} else {
 			for (var j=4*i; j< 4*(i+1) ; j++) {
-				$('#row'+(i+1)).append('<div class="space"><a href=\"../html/details.html?id='+data[j]._id+'\"><div class="space-img" style="background-image: url(\'../uploads/'+data[j].picture[0]+'\')"></div><div class="space-desc">'+data[j].address+'</div></div></a></div>');
+				$('#row'+(i+1)).append('<div class="space"><a class="spaceAddress" href=\"../html/details.html?id='+data[j]._id+'\"><div class="space-img" style="background-image: url(\'../uploads/'+data[j].picture[0]+'\')"></div><div class="space-desc">'+data[j].address+'</div></div></a></div>');
 			}
 		}
 	}
@@ -112,9 +112,9 @@ function initMap(newlat, newlon){
 $(function(){
 
 	if (sessionStorage.length>0) {
-		$('#login_link').html("Welcome "+sessionStorage.getItem("username")+"!");
+		$('#login_link').html("Hello "+sessionStorage.getItem("username")+"!");
 		$('#signup_link').html("<a href='#' onclick='logout()'>Log Out</a>");
-		$('#addProperty').css('display','block');
+		$('#addSpace_link').css('display','block');
 	}
 
 $(".includedContent").load("../html/login.html");
@@ -144,11 +144,41 @@ $.ajax({
 
 $('#js-capacity').change(function(){
 	var capacity = $('#js-capacity').find(":selected").val();
+	var dispData = [];
+	$('#listing').html("Sorry, No matching records found!!!");
+	listData.forEach(function(record) {
+		switch (capacity) {
+			case "l10":
+				if (record.capacity <= 10) dispData.push(record);
+				break;
+			case "l20":
+				if ((record.capacity > 11) && (record.capacity <=20)) dispData.push(record);
+				break;
+			case "l30":
+				if ((record.capacity > 21) && (record.capacity <=30)) dispData.push(record);
+				break;
+			case "l50":
+				if ((record.capacity > 31) && (record.capacity <=50)) dispData.push(record);
+				break;
+			case "l100":
+				if ((record.capacity > 51) && (record.capacity <=100)) dispData.push(record);
+				break;
+			case "m100":
+				if (record.capacity > 100) dispData.push(record);
+				break;
+			default:
+				dispData.push(record);
+				break;
+		}
+	});
+	processData(dispData, reqDate);	
+
 });
 
 $('#js-price').change(function(){
 	var rate = $('#js-price').find(":selected").val();
 	var dispData = [];
+	$('#listing').html("Sorry, No matching records found!!!");
 	listData.forEach(function(record) {
 		switch (rate) {
 			case "l50":
@@ -170,8 +200,8 @@ $('#js-price').change(function(){
 				if (record.rate > 250) dispData.push(record);
 				break;
 			default:
-				console.log("Not covered");
-				break;
+				dispData.push(record);
+			break;
 		}
 	});
 	processData(dispData, reqDate);
@@ -180,6 +210,33 @@ $('#js-price').change(function(){
 $('input:checkbox').change(function (){
 	var name=$(this).val();
 	var value= $(this).is(':checked');
+	console.log(name + ": "+value);
+	var dispData = [];
+	$('#listing').html("Sorry, No matching records found!!!");
+	listData.forEach(function(record) {
+		console.log(record.amenities);
+		if ($.inArray(name, record.amenities) == value) dispData.push(record);
+
+
+/*		switch (name) {
+			case "kitchenette":
+				if ($.inArray(name, record.amenities) == value) dispData.push(record);
+				break;
+			case "restroom":
+				if ((record.rate > 50) && (record.rate <=100)) dispData.push(record);
+				break;
+			case "flatscreen":
+				if ((record.rate > 100) && (record.rate <=150)) dispData.push(record);
+				break;
+			case "whiteboard":
+				if ((record.rate > 150) && (record.rate <=200)) dispData.push(record);
+				break;
+			default:
+				dispData.push(record);
+			break;
+		}*/
+	});
+	processData(dispData, reqDate);
 });
 
 });

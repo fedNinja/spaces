@@ -3,8 +3,16 @@
     box-sizing: border-box;
 }
 
-.row {
+/*.row {
   max-width: 1000px;
+  min-width:250px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 0 auto;
+}*/
+
+.row {
+  max-width: 1200px;
   min-width:250px;
   padding-left: 20px;
   padding-right: 20px;
@@ -31,8 +39,11 @@
    * Half a gutter is 10px, 10/960 (context) = 1.041666%
    *
    */
-  padding-left: 1.04166666%;
-  padding-right: 1.04166666%;
+  /*padding-left: 1.04166666%;
+  padding-right: 1.04166666%;*/
+  /****divided by 980px*/
+  padding-left: 1.020408%;
+  padding-right: 1.020408%;
 }
 
 /* Mobile defaults */

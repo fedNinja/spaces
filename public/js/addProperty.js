@@ -7,7 +7,14 @@ window.location.href='/';
 
 $(function(){
 if (sessionStorage.length > 0) {
-		$('#login_link').html("Welcome "+sessionStorage.getItem("username")+"!");
+		$('#login_link').html("Hello "+sessionStorage.getItem("username")+"!");
+		$( '#login_link' ).hover(
+			function() {
+				$( this ).addClass( 'hover' );
+			}, function() {
+				$( this ).removeClass( 'hover' );
+			}
+			);
 		$('#signup_link').html("<a href='#' onclick='logout()'>Log Out</a>");
 		$('#js-add-Space').css('display','block');
     }

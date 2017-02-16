@@ -6,6 +6,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css">
+  <link href="https://fonts.googleapis.com/css?family=Unica+One" rel="stylesheet">
 	<link rel="stylesheet" href="font/font-awesome-4.7.0/css/font-awesome.min.css">
 	<link href="css/float-grid.css" rel= "stylesheet">
 	<link href="css/main.css" rel="stylesheet">
@@ -13,17 +14,18 @@
 </head>
 <body class="home">
 	<header class="heading row">
-   <h1 class="col-9">Workable Spaces</h1>
-   <ul class="col-3 navbar">
-    <li class="col-4" id='login_link'><a href='#login-box' class='login-modal col-12 login-pad'>Login</a></li>
-    <li class="col-4" id='signup_link'><button class="col-12 sign-details" type="submit" onClick="location.href='./html/signup.html'">Signup</button></li>
-    <!--<li class="col-4" id='addSpace_link'><button id="js-add-Space" class="col-12 space-details" type="submit" onClick="location.href='./html/owner.html'">Add Space</button></li>-->
-     <li class="col-4" id='addSpace_link'><a href='./html/owner.html' class="col-12 spaceDetails" id='addProperty'>Add Space</a></li>
+   <h1 class="col-8">Workable Spaces</h1>
+   <ul class="col-4 navbar" id="myNavBar">
+    <li class="col-4" id='login_link'><a href='#login-box' class='login-modal login-pad'>Login</a></li>
+    <li class="col-4" id='addSpace_link'><a href='./html/owner.html' class="spaceDetails" id='addProperty'>Add Space</a></li>
+    <li class="col-4" id='signup_link'><a href='./html/signup.html' class="sign-details">Signup</a></li>
+    <li class="icon">
+    <a href="javascript:void(0);" onclick="myFunction()"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></a>
+    </li>
   </ul>
 </header>
 <main>
 <div class="includedContent"></div>
-<img class="bg-img" src="images/pic3.jpg">
   <div class="row">
    <div class="inner-container col-6">
      <h4 class="col-12 headerPadding">Discover your very own on-demand workable space</h4>

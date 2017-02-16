@@ -8,8 +8,17 @@ html{
 	background-color:#FCFCFC;
 }
 
-.heading{
-	text-align:center;
+.heading h1{
+	padding:5px;
+	margin:0;
+	font-family:'Unica One', 'tahoma', sans-serif;
+}
+
+.home .includedContent {
+    height: 580px;
+    background: url(../images/pic3.jpg);
+    background-size: cover;
+    background-position: center;
 }
 
 .footer-content{
@@ -23,19 +32,15 @@ footer{
 	margin-top:-2px;
 }
 
-.navbar{
-	/*float: right !important;*/
-	/*margin-top: -52px;
-	margin-right: 40px;*/
-}
-
 .homeLink{
 	text-decoration: none;
 	cursor:pointer;
 	color:#000;
 }
 
-
+ul.navbar li.icon{
+	display:none;
+}
 .navbar li a{
 	text-decoration:none;
 	color:#000;
@@ -45,6 +50,7 @@ footer{
 	list-style-type: none;
 	display: inline;
 	padding-left:20px;
+	text-align: center;
 }
 
 .navbar li button, .submitBtn button, .advSearch{
@@ -58,8 +64,24 @@ footer{
 	border-right:0;
 	color:#fff;
 }
-#addProperty{
-	color:#2e5cb7;
+
+.spaceAddress{
+	text-decoration: none;
+    color: #000;
+    text-align: center;
+}
+
+
+.navbar li:hover{
+	background-color:#3D4C61;
+}
+
+.navbar li:hover a{
+	color:#fff;
+}
+
+.hover{
+	color:#fff;
 }
 
 .top-img, .bottom-img{
@@ -104,12 +126,12 @@ h4{
 /*.btnPad{
 	margin-top:-8px;
 }*/
-.login-pad{
+/*.login-pad{
 	margin-top:20px;
 }
 .sign-details{
-	margin-top:12px;
-}
+	margin-top:19px;
+}*/
 
 .form-book-space{
 	margin-top:20px;
@@ -125,9 +147,9 @@ background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16
 }
 
 .capacity{
-	background-color:#c0c0c0;
+	/*background-color:#c0c0c0;*/
 	margin-bottom: 3px;
-    border:1px solid black;
+    border:1px solid gray;
     height: 30px;
 	border-radius:3px;
 }
@@ -164,13 +186,13 @@ background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16
 
 .centerPane, .rightPane{
 	min-height:550px;
-	background-color:#c0c0c0;
-	border:1px solid black;
+	/*background-color:#c0c0c0;*/
+	/*border:1px solid black;*/
 }
 
 .space-desc{
 	height:30%;
-	background-color:#c0c0c0;
+	/*background-color:#c0c0c0;*/
 }
 .space{
 	width:25%;
@@ -195,10 +217,10 @@ background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16
 }
 
 .amenity{
-	border: 1px solid black;
+	border: 1px solid gray;
     padding: 5px;
     border-radius: 5px;
-    background-color: #c0c0c0;
+    /*background-color: #c0c0c0;*/
 }
 
 .bottom{
@@ -220,14 +242,14 @@ background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16
 	margin: 0 auto;
 }
 
-.spaceDetails{
+li#addSpace_link{
 	display:none;
 }
 
 .navbar li{
 	display:inline;
 	text-decoration:none;
-	padding:10px;
+	padding:14px 0;
 }
 
 .social-icons {
@@ -271,5 +293,36 @@ background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16
 .contactLink{
 	float: left;
 	color:#fff;
+}
+
+/* When the screen is less than 680 pixels wide, hide all list items, except for the first one ("Home"). Show the list item that contains the link to open and close the topnav (li.icon) */
+@media screen and (max-width:680px) {
+  ul.navbar li {display: none;}
+  ul.navbar li.icon {
+    float: right;
+    display: inline-block;
+  }
+
+}
+
+/* The "responsive" class is added to the navbar with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens */
+@media screen and (max-width:680px) {
+  ul.navbar.responsive {width:100%;position: relative;background-color:#3D4C61;}
+  ul.navbar.responsive li.icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  ul.navbar.responsive li {
+    float: none;
+    display: inline;
+  }
+  ul.navbar.responsive li a {
+    display: block;
+    text-align:left;
+  }
+  ul.navbar.responsive li:hover{
+  	background-color: #e0e0e0;
+  }
 }
 
