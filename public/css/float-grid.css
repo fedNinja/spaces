@@ -3,14 +3,6 @@
     box-sizing: border-box;
 }
 
-/*.row {
-  max-width: 1000px;
-  min-width:250px;
-  padding-left: 20px;
-  padding-right: 20px;
-  margin: 0 auto;
-}*/
-
 .row {
   max-width: 1200px;
   min-width:250px;
@@ -67,18 +59,4 @@
 .col-12 {width: 100%;}
 }
 
-/* Utility classes */
-/*.visually-hidden {
-    border: 0 !important;
-    clip: rect(0 0 0 0) !important;
-    height: 1px !important;
-    margin: -1px !important;
-    overflow: hidden !important;
-    padding: 0 !important;
-    position: absolute !important;
-    width: 1px !important;
-}
-
-
-*/
 

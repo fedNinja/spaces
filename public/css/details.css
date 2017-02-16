@@ -5,7 +5,7 @@
 }
 
 .mapDiv{
-	height:400px;
+	height:auto;
 }
 
 .detailsPane, .bookSpace{
@@ -41,7 +41,6 @@
 .total-price{
 	width:100%;
 	display:none;
-	/*background-color:red;*/
 }
 .date-sel{
 	max-width:100%;
