@@ -39,6 +39,9 @@ $(function(){
                 "showMethod": "fadeIn",
                 "hideMethod": "fadeOut"
             }
+            setTimeout(function(){
+                window.location.href='/';
+            },2000);
             toastr.success('Thanks for doing buisness with us. Your space is reserved!');   
         },
         error:function(){

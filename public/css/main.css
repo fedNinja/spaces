@@ -14,6 +14,14 @@ html{
 	font-family:'Unica One', 'tahoma', sans-serif;
 }
 
+.heading{
+	padding-top:10px;
+}
+
+.search-form{
+	padding-bottom:25px;
+}
+
 .home .includedContent {
     height: 580px;
     background: url(../images/pic3.jpg);
@@ -26,10 +34,10 @@ html{
 	background-color: #4b4b4b;
 	color:#fff;
 }
+
 footer{
 	min-height:100px;
 	background-color: #4b4b4b;
-	margin-top:-2px;
 }
 
 .homeLink{
@@ -38,12 +46,19 @@ footer{
 	color:#000;
 }
 
-ul.navbar li.icon{
+.icon{
 	display:none;
+	border:0;
+	background-color: transparent;
 }
 .navbar li a{
 	text-decoration:none;
 	color:#000;
+}
+
+.hamburgerMenu ul li a{
+	text-decoration:none;
+	color:#fff;
 }
 
 .navbar li{
@@ -54,7 +69,6 @@ ul.navbar li.icon{
 }
 
 .navbar li button, .submitBtn button, .advSearch{
-	/*width: 100px;*/
 	height: 35px;
 	border-radius: 5px;
 	background-color: #3D4C61;
@@ -95,43 +109,28 @@ ul.navbar li.icon{
 
 h4{
 	color:#fff;
-	font-family:open-sans, roboto;
+	/*font-family:open-sans, roboto;*/
 	margin-bottom:20px;
 	font-size:20px;
 }
 
 .inner-container{
 	background-color:#53614c;
-	height:150px;
 	position: absolute; 
 	top:55%;
 	left:28%;
 	transform:translate(-55%,-28%);
-	/*padding:20px;*/
-}
-
-.submitBtn button{
-	/*width:120px;*/
-	/*margin-top: -2px;*/
 }
 
 .headerPadding{
 	padding-top:20px;
+	padding-left:15px;
 }
 
 .btn-book-space{
 	text-align: center;
+	padding-top: 20px;
 }
-
-/*.btnPad{
-	margin-top:-8px;
-}*/
-/*.login-pad{
-	margin-top:20px;
-}
-.sign-details{
-	margin-top:19px;
-}*/
 
 .form-book-space{
 	margin-top:20px;
@@ -147,7 +146,6 @@ background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16
 }
 
 .capacity{
-	/*background-color:#c0c0c0;*/
 	margin-bottom: 3px;
     border:1px solid gray;
     height: 30px;
@@ -186,13 +184,10 @@ background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16
 
 .centerPane, .rightPane{
 	min-height:550px;
-	/*background-color:#c0c0c0;*/
-	/*border:1px solid black;*/
 }
 
 .space-desc{
 	height:30%;
-	/*background-color:#c0c0c0;*/
 }
 .space{
 	width:25%;
@@ -220,7 +215,6 @@ background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16
 	border: 1px solid gray;
     padding: 5px;
     border-radius: 5px;
-    /*background-color: #c0c0c0;*/
 }
 
 .bottom{
@@ -228,7 +222,6 @@ background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16
 }
 
 .bottom label {
-  /*display: inline-block;*/
   text-align: right;
 }​
 
@@ -249,7 +242,7 @@ li#addSpace_link{
 .navbar li{
 	display:inline;
 	text-decoration:none;
-	padding:14px 0;
+	padding:18px 0;
 }
 
 .social-icons {
@@ -277,6 +270,22 @@ li#addSpace_link{
 	text-decoration: none;
 }
 
+.hamburgerMenu{
+	display:none;
+    margin: 0;
+    padding: 0;
+    float: right;
+}
+
+.hamburgerMenu li{
+	padding-bottom:5px;
+	list-style-type: none;
+}
+
+.fa-bars{
+	color:#000;
+}
+
 .fa-facebook {
 	background:#3b5998
 } 
@@ -297,32 +306,22 @@ li#addSpace_link{
 
 /* When the screen is less than 680 pixels wide, hide all list items, except for the first one ("Home"). Show the list item that contains the link to open and close the topnav (li.icon) */
 @media screen and (max-width:680px) {
-  ul.navbar li {display: none;}
-  ul.navbar li.icon {
+  ul.navbar {display: none;}
+  .icon {
     float: right;
     display: inline-block;
+    cursor:pointer;
   }
 
 }
 
 /* The "responsive" class is added to the navbar with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens */
 @media screen and (max-width:680px) {
-  ul.navbar.responsive {width:100%;position: relative;background-color:#3D4C61;}
-  ul.navbar.responsive li.icon {
+  /*ul.navbar.responsive {width:100%;position: relative;background-color:#3D4C61;}*/
+  .icon {
     position: absolute;
     right: 0;
     top: 0;
-  }
-  ul.navbar.responsive li {
-    float: none;
-    display: inline;
-  }
-  ul.navbar.responsive li a {
-    display: block;
-    text-align:left;
-  }
-  ul.navbar.responsive li:hover{
-  	background-color: #e0e0e0;
   }
 }
 

@@ -1,78 +1,78 @@
 <!doctype html>
 <html lang="en">
 <head>
-   <meta charset="utf-8" />
-   <!-- Mobile Metas -->
-   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-   
-   
-   <script
+ <meta charset="utf-8" />
+ <!-- Mobile Metas -->
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+ 
+ 
+ <script
  src="https://code.jquery.com/jquery-3.1.1.min.js"
  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
  crossorigin="anonymous"></script>
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.css" />
-   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-   <link rel="stylesheet" href="../css/main.css">
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.js"></script>
-   <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.css" />
+ <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+ <link rel="stylesheet" href="../css/main.css">
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.js"></script>
+ <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 </head>
 <body>
 
-<header class="heading row">
-  <a href="/" class="homeLink"><h1 class="col-9">Workable Spaces</h1></a>
-</header>
-<div class="form-dropzone upload-form-dropzone">
+  <header class="heading row">
+    <a href="/" class="homeLink"><h1 class="col-9">Workable Spaces</h1></a>
+  </header>
+  <div class="form-dropzone upload-form-dropzone">
    <form action="/upload" type='POST' class='dropzone dz-square'>
-      <input type="hidden" id="propertyId" name="propertyId"/> 
-   </form>
- <div class="center">Drag and drop pictures of your property on the above box</div>
+    <input type="hidden" id="propertyId" name="propertyId"/> 
+  </form>
+  <div class="center">Drag and drop pictures of your property on the above box</div>
 </div>
-           
-<script type="application/javascript">
-   Dropzone.autoDiscover = false;
-   var dropzone = new Dropzone(".dropzone", { url: "/upload" });
-   dropzone.on("addedfile", function(file) {
-       console.log("file added", file);
-   });
 
-   dropzone.on("complete", function(e) {
-        toastr.options = {
-            "closeButton": false,
-            "debug": false,
-            "positionClass": "toast-top-full-width",
-            "onclick": null,
-            "showDuration": "300",
-            "hideDuration": "1000",
-            "timeOut": "5000",
-            "showMethod": "fadeIn",
-            "hideMethod": "fadeOut"
-              }
-       if(e.status === "error") {
-           console.log("error", e);
-           toastr.error('sorry', 'there is an error loading pictures!')
-       }
-       else {
-           console.log("upload completed.....");
-           toastr.success('Yay! Your pictures have uploaded');
-       }
-   });
-   $.urlParam = function(name){
+<script type="application/javascript">
+ Dropzone.autoDiscover = false;
+ var dropzone = new Dropzone(".dropzone", { url: "/upload" });
+ dropzone.on("addedfile", function(file) {
+   console.log("file added", file);
+ });
+
+ dropzone.on("complete", function(e) {
+  toastr.options = {
+    "closeButton": false,
+    "debug": false,
+    "positionClass": "toast-top-full-width",
+    "onclick": null,
+    "showDuration": "300",
+    "hideDuration": "1000",
+    "timeOut": "5000",
+    "showMethod": "fadeIn",
+    "hideMethod": "fadeOut"
+  }
+  if(e.status === "error") {
+   console.log("error", e);
+   toastr.error('sorry', 'there is an error loading pictures!')
+ }
+ else {
+   console.log("upload completed.....");
+   toastr.success('Yay! Your pictures have uploaded');
+ }
+});
+ $.urlParam = function(name){
    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
    if (results==null){
      return null;
    }
    else{
     console.log(results[1]);
-     return results[1] || 0;
-   }
- }
+    return results[1] || 0;
+  }
+}
 if($.urlParam('propertyid')){
-    var propertyName = $.urlParam('propertyid');
-     console.log(propertyName);
-     $('#propertyId').val(propertyName);
-   }
+  var propertyName = $.urlParam('propertyid');
+  console.log(propertyName);
+  $('#propertyId').val(propertyName);
+}
 
 
-   </script>
- </body>
+</script>
+</body>
 </html>

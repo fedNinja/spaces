@@ -21,6 +21,8 @@ if (sessionStorage.length > 0) {
 
 var userId = sessionStorage.getItem("userid");
 $('#testHidden').val(userId);
+$("#js-dateFrom").datepicker({ minDate: 0, dateFormat: 'yy-mm-dd'});
+$("#js-dateTo").datepicker({ minDate: 0, dateFormat: 'yy-mm-dd'});
 $('#js-space-desc-form').submit(function(e){
 	e.preventDefault();
 	var name = $('#js-name').val();

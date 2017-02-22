@@ -6,14 +6,15 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css">
-	<link rel="stylesheet" href="font/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="../font/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<link href="../css/float-grid.css" rel= "stylesheet">
 	<link href="../css/main.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.css" />
 </head>
 <body>
 	<header class="heading row">
-		<h1 class="col-8">Workable Spaces</h1>
+   		<h1 class="col-8">Workable Spaces</h1>
 		<ul class="col-4 navbar">
 		<li class="col-6" id='login_link'><a href='#login-box' class='login-modal col-12 login-pad'></a></li>
 		 <li class="col-4" id='signup_link'><a href='./html/signup.html' class="col-12 sign-details">Signup</a></li>
@@ -55,13 +56,15 @@
 				<div class="row">
 					<div class="col-9 bottom">
 						<label for="dateFrom" class="col-6">Date Available From</label>
-						<input type="text" name="dateFrom" id="js-dateFrom" class="space-input col-6" required=true>
+						<!--<input type="text" name="dateFrom" id="js-dateFrom" class="space-input col-6" required=true>-->
+						<input type="text" class="space-input col-6" name="dateFrom" id="js-dateFrom" placeholder="mm/dd/yyyy" required="true">
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-9 bottom">
 						<label for="dateTo" class="col-6">Date Available To</label>
-						<input type="text" name="dateTo" id="js-dateTo" class="space-input col-6" required=true>
+						<!--<input type="text" name="dateTo" id="js-dateTo" class="space-input col-6" required=true>-->
+						 <input type="text" class="space-input col-6" name="dateTo" id="js-dateTo" placeholder="mm/dd/yyyy" required="true">
 					</div>
 				</div>
 				<div class="row">
@@ -96,9 +99,7 @@
 						<input type="checkbox" name="amenities" value="kitchenette" id ="js-chbox2"> Kitchenette
 						<input type="checkbox" name="amenities" value="flatscreen" id ="js-chbox3"> FlatScreen
 						<input type="checkbox" name="amenities" value="restroom" id ="js-chbox4"> Restroom
-						<!--    <input type="file" name="sampleFile" id="sampleFile" />-->
 						</span>
-						<!--<p><input type="submit" value="addSpace" class="addSpace"/></p>-->
 					</div>
 				</div>
 				<div class="submitBtn addSpace"><button type="submit" class="col-12">Add Space</button></div>
@@ -124,6 +125,10 @@
 		src="https://code.jquery.com/jquery-3.1.1.min.js"
 		integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
 		crossorigin="anonymous"></script>
+		<script
+  src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+  integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+  crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.js"></script>
 		<script src="../js/addProperty.js"></script>
 

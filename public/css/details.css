@@ -5,6 +5,7 @@
 }
 
 .mapDiv{
+	min-height:200px;
 	height:auto;
 }
 
@@ -14,7 +15,6 @@
 
 .bookSpace{
 	background-color:#c0c0c0;
-	height:200px;
 }
 
 .imgDimension{

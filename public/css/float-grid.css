@@ -59,4 +59,11 @@
 .col-12 {width: 100%;}
 }
 
+@media only screen and (max-width:640px){
+
+  .bottom label {
+    display:block;
+    text-align:center;
+  }​
+}
 

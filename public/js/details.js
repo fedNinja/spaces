@@ -47,12 +47,13 @@ var displayData = function(data){
 	$("#js-details-space").append('<h2 class="space-desc-details">'+data[0].address+" "+data[0].city+'</h2><p><h3 class="space-desc-details">About the space</h3></p><hr><p class="space-desc-details">'+data[0].name+'. This space is conveniently located at '+data[0].city+'.Spacious and comfortable place to hold your meeting or event.</p>'+
 		'<h3 class="space-desc-details"><p>Amenities</p></h3><hr><p class="space-desc-details">'+data[0].amenities+'</p><h3 class="space-desc-details">Location Map</h3><hr><div id="propertyMap" class="mapDiv"></div><h3 class="space-desc-details">Rules</h3><hr><p class="space-desc-details">All booking start and end time are inclusive of set time and end time.</p>');
 	$("#js-book-space").append('<span class="col-6 padTop">Total Attendees:'+data[0].capacity+'</span><span class="col-6 padTop verticalLine">$'+data[0].rate+' Per hour</span><hr>'
-		+'<div class="col-12 form-book-space" id="js-book-form"><span class="col-4"><input type="date" class="date-sel" name="date-entry" id="js-date-booked" type="date" required="true"></span>'
+		+'<div class="col-12 form-book-space" id="js-book-form"><span class="col-4"><input type="text" class="date-sel col-12" name="date-entry" id="js-date-booked" placeholder="yyyy-mm-dd" required="true"></span>'
 		+'<span class="col-4"><select class="startTime" id="js-startTime" required="true"></select></span>'
 		+'<span class="col-4"><select class="endTime" id="js-endTime" required="true"></select></span>'
 		+'<div class="col-12 total-price" id="js-total-price"> </div>'
-		+'<div class="submitBtn btn-book-space col-12"><button type="submit" id="js-book-submit">Book Space</button></div></div>'    			
+		+'<div class="submitBtn btn-book-space col-12"><button type="submit" id="js-book-submit">Book Space</button></div>'			
 		);
+	$( "#js-date-booked" ).datepicker({minDate: 0, dateFormat: 'yy-mm-dd'});
 	populateTimings(data);
 	getLocation(data[0].address+" "+data[0].city);
 }
@@ -124,7 +125,10 @@ $(function(){
 	});	
 
 	$('#js-book-space').on("click",'#js-book-submit',function(e){
+	  //$('#js-book-form').on('submit',function(e){
 		e.preventDefault();
+
+		console.log('ai klkjlakjskl');
 		$('#js-total-price').css('display','block');
 		var totalTime;
 		var initTime = $('#js-startTime').find(':selected').val();
@@ -144,6 +148,7 @@ $(function(){
 		total = rate*totalTime + .05*(rate*totalTime);
 		$('#js-total-price').append('<b><p class="col-12">Price</p></b><hr><p class="col-12"><span class="col-6">$'+rate+'.00 '+'x'+totalTime+'hours</span><span class="col-6">$'+(rate*totalTime)+'.00</span></p><p><span class="col-6">Processing Fee(5%)</span><span class="col-6">$'+.05*(rate*totalTime)+'.00</span></p><hr><p class="col-12"><span class="col-6"><b>Total</b></span><span class="col-6">$'+total+'.00</span></p>');
 		$('.submitBtn').html('<button type="submit" id="js-reserve">Reserve</button>');
+		return false;
 	});
 
 	$('#js-book-space').on("click",'#js-reserve',function(e){

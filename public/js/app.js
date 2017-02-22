@@ -5,17 +5,13 @@ function logout(){
 	window.location.href='/';
 }
 
-/****************************Adding responsive class to target small screens for navbar******************/
-function myFunction() {
-	if($('#myNavBar').hasClass('myNavBar')) $('#myNavBar').addClass('responsive');
-	else $('#myNavBar').addClass('myNavBar');
-}
-
-/********************************************************************************************************/
-
+$( ".icon" ).click(function() {
+	$(".hamburgerMenu").toggle();
+});
 
 $(function(){
 
+	$( "#js-date-selected" ).datepicker({minDate: 0, dateFormat: 'yy-mm-dd'});
 	if (sessionStorage.length > 0) {
 		$('#login_link').html("Hello "+sessionStorage.getItem("username")+"!");
 		$( '#login_link' ).hover(
@@ -56,7 +52,6 @@ $(function(){
 		console.log("I am here");
 		var cityName = $('#js-location').find(":selected").val();
 		var dateSelected = $('#js-date-selected').val();
-		console.log(dateSelected);
 		window.location.href="./html/listPage.html?city="+cityName+"&date="+dateSelected;
 	});
 
@@ -81,9 +76,13 @@ $(function(){
 				if(data.length==0) {
 					$('#js-errorMsg').css('display','block');
 					$('#js-errorMsg').css('color','red');
+					$('#signin').each(function(){
+					    this.reset();
+					});
 				}
 				else {
 					if(data[0].password==password) {
+						console.log("passed");
 						$('#mask , .login-popup').fadeOut(300 , function() {
 							$('#mask').remove();  
 						});
@@ -104,6 +103,9 @@ $(function(){
 					} else {
 						$('#js-errorMsg').css('display','block');
 						$('#js-errorMsg').css('color','red');
+						$('#signin').each(function(){
+					    this.reset();
+					});
 					}
 
 				};
