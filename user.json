@@ -1,0 +1,3 @@
+{"_id":{"$oid":"58938878b7dec74a455c8f90"},"firstName":"shushant","lastName":"agarwal","address":"37143 waverly terrace fremont ca 94536","username":"sagarwal","password":"abcd","__v":0}
+{"_id":{"$oid":"58938b943f20c54a77ceabd3"},"firstName":"Payal","lastName":"Agrawal","address":"fremont","username":"Payal","password":"1234","__v":0}
+{"_id":{"$oid":"589ab94758ab096ea2881e1a"},"firstName":"arnav","lastName":"agarwal","address":"37143 waverly terrace fremont ca 94536","username":"arnaga","password":"10047826","__v":0}
