@@ -26,7 +26,7 @@ $(function(){
 		console.log("userName: "+userName);
 		var url='/reservations';
 	
-    $(document).on('submit', 'js-paymentForm', function(e) {
+    $(document).on('submit', '#js-paymentForm', function(e) {
     //$('#js-paymentForm').submit(function(e){
 		e.preventDefault();
 		$.ajax({
