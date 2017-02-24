@@ -1,3 +1,9 @@
+function logout(){
+    sessionStorage.clear();
+    window.location.href='/';
+}
+
+
 $(function(){
 
     if (sessionStorage.length>0) {
@@ -5,8 +11,7 @@ $(function(){
         $('#signup_link').html("<a href='#' onclick='logout()'>Log Out</a>");
     }
     
-	   console.log(" i am in payment");
-		$('#js-amt-paid').html("$"+sessionStorage.getItem("paymentAmount")+".00");
+	    $('#js-amt-paid').html("$"+sessionStorage.getItem("paymentAmount")+".00");
 		var propId=sessionStorage.getItem("propertyid");
 		var dateReserved=sessionStorage.getItem("rDate");
 		var bookStTime=sessionStorage.getItem("startTime");
@@ -20,7 +25,9 @@ $(function(){
 		console.log("userId: "+userId);
 		console.log("userName: "+userName);
 		var url='/reservations';
-	$('#js-paymentForm').submit(function(e){
+	
+    $(document).on('submit', 'js-paymentForm', function(e) {
+    //$('#js-paymentForm').submit(function(e){
 		e.preventDefault();
 		$.ajax({
 		url: url,
@@ -54,11 +61,5 @@ $(function(){
             console.log("Sorry, server error");
         }
         });
-
 	});
-
-
-
-
-
 });

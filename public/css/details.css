@@ -24,6 +24,16 @@
     background-position: center;
 }
 
+.reserveBtn {
+	display: none;
+	margin:0 auto;
+}
+
+.btnBook{
+	margin-top: 20px;
+    padding: 10px;
+}
+
 .signup-pad{
 	margin-top: -6px;
 }
