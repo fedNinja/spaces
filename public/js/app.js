@@ -26,7 +26,6 @@ $(function(){
 	}
 
 	$(".includedContent").load("../html/login.html");
-	
 	/************Login form :start**************/
 	$('a.login-modal').click(function() {
     // Add the mask to body
@@ -44,7 +43,6 @@ $(function(){
 		return false;
 	});
 	/****Login form :End**************/
-
 
 	/*************Search-form:start***********/
 	$('#js-space-form').submit(function(e){

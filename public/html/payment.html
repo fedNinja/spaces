@@ -6,6 +6,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css">
+		<link href="https://fonts.googleapis.com/css?family=Unica+One" rel="stylesheet">
 		<link rel="stylesheet" href="../font/font-awesome-4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 		<link href="../css/float-grid.css" rel= "stylesheet">
@@ -13,11 +14,15 @@
 		<link href="../css/payment.css" rel="stylesheet">
 	</head>
 	<body>
-		<header>
-			<h1 class="heading row">Payment Details</h1>
-		</header>
+	<header class="heading row">
+		<a href ="/" class="homeLink"><h1 class="col-8">Workable Spaces</h1></a>
+		<ul class="col-4 navbar">
+			<li id='login_link' class='col-4'><a href="#login-box" class="login-modal col-12">Login</a></li>
+			<li id='signup_link' class='col-4'><a href='./signup.html' class="col-12 sign-details">Signup</a></li>
+		</ul>
+	</header>
 		<main>
-			<form id="js-paymentForm" class="payment">
+			<form id="js-paymentForm" class="payment space-desc-form">
 				<fieldset>
 					<div class="row">
 						<div class="col-9 bottom">
@@ -44,7 +49,7 @@
 					<div class="row">
 					<div class="col-9 bottom">
 						<label for= "cc_number" class="col-6 elemAlign">Card Number</label>
-						<span class="cc-wrapper col-6"><i class="fa fa-credit-card" aria-hidden="true"></i><input type="text" name="cc_number" class="cc-input elemAlign col-12 inputStyle"></span>
+						<span class="cc-wrapper col-6"><input type="text" name="cc_number" placeholder class="cc-input elemAlign col-12 inputStyle"><i class="fa fa-credit-card" aria-hidden="true"></i></span>
 					</div>
 					</div>
 					<div class="row">
@@ -92,6 +97,20 @@
 				</fieldset>
 			</form>
 		</main>
+		<footer class="footer">
+		  <div class="row footer-content">
+		  <div class="col-6">
+		  <a href="./html/contactus.html" class="contactLink footerTab">Contact us</a>
+		  </div>
+		    <div class="col-6">
+		      <ul class="social-icons">
+		        <li><a href="http://facebook.com/"><i class="fa fa-facebook"></i></a></li>
+		        <li><a href="http://linkedin.com/"><i class="fa fa-linkedin"></i></a></li>
+		        <li><a href="http://twitter.com/"><i class="fa fa-twitter"></i></a></li>
+		      </ul>
+		        </div>
+		    </div>
+		</footer>
 	</body>
 	<script
   src="https://code.jquery.com/jquery-3.1.1.min.js"

@@ -14,13 +14,14 @@
 </head>
 <body>
 	<header class="heading row">
-		<h1 class="col-8">Workable Spaces</h1>
+		<a href ="/" class="homeLink"><h1 class="col-8">Workable Spaces</h1></a>
 		<ul class="col-4 navbar">
-			<li id='login_link' class='col-4'><a href="#login-box" class="login-modal col-12 login-pad">Login</a></li>
+			<li id='login_link' class='col-4'><a href="./loginMain.html">Login</a></li>
 			<li class="col-4" id='signup_link'><a href='./signup.html' class="col-12 sign-details">Signup</a></li>
 			<li class="col-4" id='addSpace_link'><a href='./owner.html' class="col-12 spaceDetails" id='addProperty'>Add Space</a></li>
 		</ul>
 	</header>
+	<hr class="listDivider">
 	<main class="wrapper">
 		<div class="includedContent"> </div>
 		<div class="row topbar">
@@ -35,10 +36,12 @@
 			</select>
 			<div class="col-6 amenity">
 				<label for="amenities">Amenities</label>            
-				<span><label><input type="checkbox" name="amenities" value="kitchenette" />Kitchenette</label></span>
-				<span><label><input type="checkbox" name="amenities" value="restroom" />Restroom</label></span>
-				<span><label><input type="checkbox" name="amenities" value="flatscreen" />Flatscreen</label></span>
-				<span><label><input type="checkbox" name="amenities" value="whiteboard" />Whiteboard</label></span>
+				<span><label><input type="checkbox" name="amenities" id="any" value="any" checked=true />Any</label></span>
+				<span><label><input type="checkbox" name="amenities" id="kitchenette" value="kitchenette" />Kitchenette</label></span>
+				<span><label><input type="checkbox" name="amenities" id="restroom" value="restroom" />Restroom</label></span>
+				<span><label><input type="checkbox" name="amenities" id="flatscreen" value="flatscreen" />Flatscreen</label></span>
+				<span><label><input type="checkbox" name="amenities" id="whiteboard" value="whiteboard" />Whiteboard</label></span>
+				<span><label><input type="checkbox" name="amenities" id="all" value="all" />All</label></span>
 			</div>
 			<select class="col-3 capacity" id="js-price" required="true">
 				<option value=" ">Price per hour: Any</option>

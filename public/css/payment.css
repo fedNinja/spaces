@@ -27,11 +27,21 @@ margin-right: 250px;
 	text-align: right;
 }
 
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  text-align: center;
+}
+
 .elemAlign{
 	padding:5px;
 }
 
 .inputStyle{
+	padding-left: 20px;
 	border-radius:3px;
 	border:1px solid gray;
 	}
@@ -45,6 +55,8 @@ margin-right: 250px;
 	border-top: 0;
 	border-right:0;
 	color:#fff;
+	margin-top:30px;
+	margin-bottom:42px;
 }
 .align{
 	margin: auto;

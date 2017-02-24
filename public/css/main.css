@@ -9,6 +9,7 @@ html{
 }
 
 .heading h1{
+	font-size:40px;
 	padding:5px;
 	margin:0;
 	font-family:'Unica One', 'tahoma', sans-serif;
@@ -87,8 +88,8 @@ footer{
 
 
 .navbar li:hover{
-	background-color:#3D4C61;
-}
+    background-color: #3D4C61;
+ }
 
 .navbar li:hover a{
 	color:#fff;
@@ -118,13 +119,18 @@ h4{
 	background-color:#53614c;
 	position: absolute; 
 	top:55%;
-	left:28%;
-	transform:translate(-55%,-28%);
+	left:33%;
+	transform:translate(-55%,-33%);
 }
 
 .headerPadding{
 	padding-top:20px;
 	padding-left:15px;
+}
+
+.aboutDiv{
+	margin-top: 40px;
+    margin-bottom: 60px;
 }
 
 .btn-book-space{
@@ -164,7 +170,9 @@ background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16
 }
 
 .topbar{
+	padding-top:20px;
 	text-align: center;
+	padding-bottom:20px;
 }
 
 .centerPane{
@@ -242,7 +250,7 @@ li#addSpace_link{
 .navbar li{
 	display:inline;
 	text-decoration:none;
-	padding:18px 0;
+	padding:22px 0;
 }
 
 .social-icons {
@@ -268,6 +276,34 @@ li#addSpace_link{
 
 .footerTab{
 	text-decoration: none;
+}
+
+.aboutDiv, .textSpec{
+    padding-top: 20px;
+}
+
+.aboutDiv h2{
+	line-height: 45px;
+    font-size: 35px;	
+    font-family:'Unica One', 'tahoma', sans-serif;
+}
+
+.alignCenter{
+	text-align: center;
+}
+.textSpec{
+	color: #53614c;
+    font-size: 25px;
+    line-height: 30px;
+}
+
+.listSpec{
+	font-size: 20px;
+    line-height: 25px;
+}
+
+.listImg{
+	padding-top:40px;
 }
 
 .hamburgerMenu{
@@ -304,6 +340,21 @@ li#addSpace_link{
 	color:#fff;
 }
 
+.listDivider{
+	border: none;
+    height: 1px;
+    background-color: #ccc;
+}
+
+.space-desc-form fieldset{
+	border-top: 1px solid #ccc;
+    padding-top: 30px;
+    padding-bottom: 50px;
+    border-left: none;
+    border-right: none;
+    border-bottom:none;
+}
+
 /* When the screen is less than 680 pixels wide, hide all list items, except for the first one ("Home"). Show the list item that contains the link to open and close the topnav (li.icon) */
 @media screen and (max-width:680px) {
   ul.navbar {display: none;}
@@ -323,5 +374,10 @@ li#addSpace_link{
     right: 0;
     top: 0;
   }
+
+  .space-desc-form{
+  	text-align:center;
+  }
+
 }
 

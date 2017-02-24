@@ -23,6 +23,23 @@ var processData = function(data, reqDate) {
     }
 }
 
+var getMatchingRecords = function(options) {
+	var returnData = [];
+	var isMatchingRecordFlag;
+	listData.forEach(function(record) {
+		isMatchingRecordFlag = true;
+		console.log("checking for record");
+		options.forEach(function(option) {
+			if ($.inArray(option, record.amenities) == -1) {
+				isMatchingRecordFlag = false;
+			}
+		});
+		if (isMatchingRecordFlag) returnData.push(record);
+		else console.log("record not found");
+	});
+	return returnData;
+}
+
 var checkAvailableDates = function(data, reqDate) {
 	var returnData = [], avl_date_from, avl_date_to ;
 	data.forEach(function(record){
@@ -207,35 +224,55 @@ $('#js-price').change(function(){
 	processData(dispData, reqDate);
 });
 
+
+var $allothers = $('input[type="checkbox"][name="amenities"]').not('#all');
+var $anyothers = $('input[type="checkbox"][name="amenities"]').not('#any');
 $('input:checkbox').change(function (){
 	var name=$(this).val();
-	var value= $(this).is(':checked');
-	console.log(name + ": "+value);
+	var value = $(this).is(':checked');
+	var inputs = ["kitchenette", "restroom", "flatscreen", "whiteboard"];
 	var dispData = [];
 	$('#listing').html("Sorry, No matching records found!!!");
-	listData.forEach(function(record) {
-		console.log(record.amenities);
-		if ($.inArray(name, record.amenities) == value) dispData.push(record);
-
-
-/*		switch (name) {
-			case "kitchenette":
-				if ($.inArray(name, record.amenities) == value) dispData.push(record);
-				break;
-			case "restroom":
-				if ((record.rate > 50) && (record.rate <=100)) dispData.push(record);
-				break;
-			case "flatscreen":
-				if ((record.rate > 100) && (record.rate <=150)) dispData.push(record);
-				break;
-			case "whiteboard":
-				if ((record.rate > 150) && (record.rate <=200)) dispData.push(record);
-				break;
-			default:
-				dispData.push(record);
+	switch (name) {
+		case "any":
+			console.log("Any checked");
+			if(!value) $('#all').prop('checked', true);
+			$anyothers.prop('checked', false);
+			dispData = listData;
 			break;
-		}*/
-	});
+		case "all":
+			console.log("All checked");
+			if (!value) {
+				$('#any').prop('checked', true);
+				dispData = listData;
+			}
+			else {
+				$allothers.prop('checked', false);
+				dispData = getMatchingRecords(inputs);
+			}
+			break;
+		default:
+			console.log("Other than all and any");
+			var count=0;
+			var selected = [];
+			for(var i=0; i<inputs.length; i++) {
+				name=$("#"+inputs[i]).val();
+				value= $("#"+inputs[i]).is(':checked');
+				if(value) {
+					$('#all').prop('checked', false);
+					$('#any').prop('checked', false);
+					selected.push(name);
+					count++;
+				}
+			}
+			console.log("count is "+count);
+			console.log(selected);
+			if (count == 4) dispData = getMatchingRecords(inputs);
+			else dispData = getMatchingRecords(selected);
+			if (count == 0) $('#any').prop('checked', true);
+			break;
+	}
+	console.log(dispData);
 	processData(dispData, reqDate);
 });
 

@@ -1,4 +1,10 @@
 $(function(){
+
+    if (sessionStorage.length>0) {
+        $('#login_link').html("Welcome "+sessionStorage.getItem("username")+"!");
+        $('#signup_link').html("<a href='#' onclick='logout()'>Log Out</a>");
+    }
+    
 	   console.log(" i am in payment");
 		$('#js-amt-paid').html("$"+sessionStorage.getItem("paymentAmount")+".00");
 		var propId=sessionStorage.getItem("propertyid");

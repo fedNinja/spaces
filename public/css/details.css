@@ -20,6 +20,8 @@
 .imgDimension{
 	width:100%;
 	height:350px;
+    background-size: cover;
+    background-position: center;
 }
 
 .signup-pad{
@@ -31,6 +33,7 @@
 }
 
 .bookSpace{
+	margin-top: 20px;
 	padding: 12px;
 }
 
@@ -39,6 +42,7 @@
 }
 
 .total-price{
+	padding-top: 20px;
 	width:100%;
 	display:none;
 }
@@ -49,4 +53,13 @@
 .startTime, .endTime{
 	width:100%;
 	text-indent:30px;
+}
+
+.padPrice{
+	padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.spaceBottom{
+	margin-bottom:40px;
 }
