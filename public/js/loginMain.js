@@ -11,12 +11,19 @@ $(function(){
 
 		});
 
-	$('#fpassword').submit(function(e) {
+	$(document).on('submit', '#fpassword',function(e) {
 			e.preventDefault();
-			console.log("ba ho ho ho");
 			$('.pwdDiv').hide();
 			$('.infoDiv').css('display','block');
 		});
+
+	$(document).on('click', '#ok_email', function() {
+		$('#mask , .login-popup').fadeOut(300 , function() {
+			$('#mask').remove();
+		}); 
+		window.location.href="/";
+		return false;
+	});
 
 	$(document).on('click', 'a.close, #mask', function() {
 		$('#mask , .login-popup').fadeOut(300 , function() {
