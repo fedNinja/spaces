@@ -12,7 +12,7 @@ window.location.href='/';
 
 var processData = function(data, reqDate) {
 	var dispData =  checkAvailableDates(data,reqDate);
-	if(!dispData || dispData.length <1) console.log("no matching record found");
+	if(!dispData || dispData.length <1) $('#listing').html("Sorry, No matching records found!!!");
 	else {
 		displayData(dispData);  
 		var results = []; 
