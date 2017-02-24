@@ -28,7 +28,6 @@ var getMatchingRecords = function(options) {
 	var isMatchingRecordFlag;
 	listData.forEach(function(record) {
 		isMatchingRecordFlag = true;
-		console.log("checking for record");
 		options.forEach(function(option) {
 			if ($.inArray(option, record.amenities) == -1) {
 				isMatchingRecordFlag = false;
@@ -235,13 +234,11 @@ $('input:checkbox').change(function (){
 	$('#listing').html("Sorry, No matching records found!!!");
 	switch (name) {
 		case "any":
-			console.log("Any checked");
 			if(!value) $('#all').prop('checked', true);
 			$anyothers.prop('checked', false);
 			dispData = listData;
 			break;
 		case "all":
-			console.log("All checked");
 			if (!value) {
 				$('#any').prop('checked', true);
 				dispData = listData;
@@ -252,7 +249,6 @@ $('input:checkbox').change(function (){
 			}
 			break;
 		default:
-			console.log("Other than all and any");
 			var count=0;
 			var selected = [];
 			for(var i=0; i<inputs.length; i++) {
@@ -265,14 +261,11 @@ $('input:checkbox').change(function (){
 					count++;
 				}
 			}
-			console.log("count is "+count);
-			console.log(selected);
 			if (count == 4) dispData = getMatchingRecords(inputs);
 			else dispData = getMatchingRecords(selected);
 			if (count == 0) $('#any').prop('checked', true);
 			break;
 	}
-	console.log(dispData);
 	processData(dispData, reqDate);
 });
 
