@@ -6,7 +6,7 @@ function logout(){
 }
 
 $( ".icon" ).click(function() {
-	$(".hamburgerMenu").toggle();
+	$(".hamburgerMenu" ).slideToggle("slow");
 });
 
 $(function(){
@@ -38,8 +38,8 @@ $(function(){
 
 	$(document).on('click', 'a.close, #mask', function() {
 		$('#mask , .login-popup').fadeOut(300 , function() {
-			$('#mask').remove();  
-		}); 
+			$('#mask').remove();
+		});
 		return false;
 	});
 	/****Login form :End**************/
@@ -59,7 +59,6 @@ $(function(){
 
 	$(document).on('submit', '#signin', function(e) {
 		e.preventDefault();
-		console.log("Into the login submit");
 		var name = $('#username').val();
 		var password = $('#password').val();
 		var requestData={
@@ -69,7 +68,7 @@ $(function(){
 			url: '/users',
 			type: 'GET',
 			data: requestData,
-			
+
 			success: function(data){
 				if(data.length==0) {
 					$('#js-errorMsg').css('display','block');
@@ -82,7 +81,7 @@ $(function(){
 					if(data[0].password==password) {
 						console.log("passed");
 						$('#mask , .login-popup').fadeOut(300 , function() {
-							$('#mask').remove();  
+							$('#mask').remove();
 						});
 						$('#login_link').html("Hello "+data[0].firstName+"!");
 						$( '#login_link' ).hover(

@@ -4,7 +4,6 @@ $(function(){
     $('#contactus').click(function(e) {
    //  $('#js-contactForm').submit(function(e){
     e.preventDefault();
-    console.log("I am inside submit contact");
     var name = $('#js-name').val();
     var email = $('#js-email').val();
     var comment = $('#js-comment').val()||" ";
@@ -31,12 +30,12 @@ $(function(){
                 "showMethod": "fadeIn",
                 "hideMethod": "fadeOut"
             }
-            toastr.success('Thanks for contacting us. Your email is recieved!');    
+            toastr.success('Thanks for contacting us. Your email is recieved!');
         },
         error:function(){
             console.log("Sorry, server error");
         }
 
         });
-    });        
+    });
 });

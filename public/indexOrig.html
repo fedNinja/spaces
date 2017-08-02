@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Welcome to world of spaces</title>
+	<meta name="description" content="workable spaces">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css">
+  <link href="https://fonts.googleapis.com/css?family=Unica+One" rel="stylesheet">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="font/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link href="css/float-grid.css" rel= "stylesheet">
+	<link href="css/main.css" rel="stylesheet">
+  <link href="css/login.css" rel= "stylesheet">
+</head>
+<body class="home">
+  <div class="row">
+	<header class="heading">
+   <h1 class="col-8">Workable Spaces</h1>
+   <ul class="col-4 navbar">
+    <li class="col-3" id='login_link'><a href='./html/loginMain.html'>Login</a></li>
+    <li class="col-3" id='aboutUs_link'><a href='#about'>About</a></li>
+    <li class="col-3" id='addSpace_link'><a href='./html/owner.html' class="spaceDetails" id='addProperty'>Add Space</a></li>
+    <li class="col-3" id='signup_link'><a href='./html/signup.html' class="sign-details">Signup</a></li>
+  </ul>
+  <button class="icon"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></button> 
+</header>
+</div>
+  <div class="hamburgerMenu row">
+   <ul class="col-12">
+    <li><a href='#'>Login</a></li>
+    <li><a href='#'>Add Space</a></li>
+    <li><a href='#'>Signup</a></li>
+    </ul>
+  </div>
+<main>
+<div class="includedContent"></div>
+<section class="contentSection">
+   <div class="inner-container">
+    <div class="row">
+      <div class="col-12">
+        <h4 class="col-12 headerPadding">Discover your very own on-demand workable space</h4>
+        <form class="col-12 search-form" id="js-space-form">
+        <span class="col-4">
+          <select class="col-12 location" id="js-location" required="true">
+            <option value="">Location</option>
+            <option value="San Francisco">San Francisco</option>
+            <option value="New York">New York</option>
+            <option value="fremont">Fremont</option>
+          </select>
+        </span>
+        <span class="col-4">
+          <input type="text" class="col-12 date-sel" name="date-entry" id="js-date-selected" placeholder="yyyy-mm-dd" required="true">
+        </span>
+        <span class="submitBtn col-4"><button type="submit" class="col-12">Find my space</button></span>
+    </form>
+    </div>
+  </div>
+</div>
+</section>
+<section class="aboutDiv">
+  <div id="about">
+    <div class="row">
+      <div class="col-12 aboutDiv">
+        <h2 class="alignCenter">How workable Spaces Work</h2>
+        <div class="col-6 renterSpace">
+        <div class="alignCenter">
+        <h3 class="textSpec">Looking for a Space</h3>
+        <img src="./images/space_info_img.png">
+        </div>
+        <ul class="listSpec">
+          <li>Search for private spaces to book immediately</li>
+          <li> Options include meeting rooms, fitness studios, and more</li>
+          <li>Reserve instantly for an hour or longer </li>           
+        </ul>
+        </div>
+        <div class="col-6 ownerSpace">
+        <div class="alignCenter">
+        <h3 class="textSpec">Listing your Place</h3>
+        <img src="./images/list_info_image.png" class="listImg">
+        </div>
+        <ul class="listSpec">
+          <li>List temporarily unused places in your office, restaurant, or other business</li>
+          <li>Specify when it's available and terms of use</li>
+          <li>Receive on-demand requests to use your place at your rates</li>           
+        </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="row footer-content">
+  <div class="col-6">
+  <a href="./html/contactus.html" class="contactLink footerTab">Contact us</a>
+  </div>
+    <div class="col-6">
+      <ul class="social-icons">
+        <li><a href="http://facebook.com/"><i class="fa fa-facebook"></i></a></li>
+        <li><a href="http://linkedin.com/"><i class="fa fa-linkedin"></i></a></li>
+        <li><a href="http://twitter.com/"><i class="fa fa-twitter"></i></a></li>
+      </ul>
+        </div>
+    </div>
+</footer>
+</body>
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+  <script
+  src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+  integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+  crossorigin="anonymous"></script>
+<script src="./js/app.js"></script>
+</html>

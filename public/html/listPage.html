@@ -25,6 +25,7 @@
 	<main class="wrapper">
 		<div class="includedContent"> </div>
 		<div class="row topbar">
+			<span>
 			<select class="col-3 capacity" id="js-capacity" required="true">
 				<option value=" ">Attendees: Any</option>
 				<option value="l10">Less than 10</option>
@@ -34,6 +35,8 @@
 				<option value="l100">Between 51 and 100</option>
 				<option value="m100">More than 100</option>
 			</select>
+			</span>
+			<span>
 			<div class="col-6 amenity">
 				<label for="amenities">Amenities</label>            
 				<span><label><input type="checkbox" name="amenities" id="any" value="any" checked=true />Any</label></span>
@@ -43,6 +46,8 @@
 				<span><label><input type="checkbox" name="amenities" id="whiteboard" value="whiteboard" />Whiteboard</label></span>
 				<span><label><input type="checkbox" name="amenities" id="all" value="all" />All</label></span>
 			</div>
+			<span>
+			<span>
 			<select class="col-3 capacity" id="js-price" required="true">
 				<option value=" ">Price per hour: Any</option>
 				<option value="l50">Under $50</option>
@@ -52,6 +57,7 @@
 				<option value="l250">Between $200 and $250</option>
 				<option value="m250">More than $250</option>
 			</select>
+			</span>
 		</div>
 		
 		<div class="row">

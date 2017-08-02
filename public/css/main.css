@@ -4,8 +4,22 @@
 	box-sizing:border-box;
 }
 
-html{   
+html{
 	background-color:#FCFCFC;
+}
+
+.search-form1{
+	width:100%;
+	position:relative;
+}
+
+.location,.date-sel,.submitBtn1{
+	width:30%;
+	position:relative;
+}
+
+.location,.date-sel{
+	margin-right:10px;
 }
 
 .heading h1{
@@ -23,11 +37,13 @@ html{
 	padding-bottom:25px;
 }
 
-.home .includedContent {
+.home .includedContent1 {
+		width:100%;
     height: 580px;
     background: url(../images/pic3.jpg);
     background-size: cover;
     background-position: center;
+    position:relative;
 }
 
 .footer-content{
@@ -57,9 +73,25 @@ footer{
 	color:#000;
 }
 
+.hamburgerMenu ul li{
+	padding-top:20px;
+	padding-bottom:20px;
+	border-bottom:1px solid #dddddd;
+}
+
 .hamburgerMenu ul li a{
 	text-decoration:none;
-	color:#fff;
+	color:#000;
+}
+
+.hamburgerMenu li:hover{
+	display: block;
+	background: #3D4C61;
+	border-bottom:1px solid #dddddd ;
+}
+
+.hamburgerMenu ul li a:hover{
+	color: #fff;
 }
 
 .navbar li{
@@ -73,7 +105,7 @@ footer{
 	height: 35px;
 	border-radius: 5px;
 	background-color: #3D4C61;
-	border-bottom: 5px solid #313C4D;
+	border-bottom: 3px solid #313C4D;
 	border-left:0;
 	border-top: 0;
 	border-right:0;
@@ -110,22 +142,30 @@ footer{
 
 h4{
 	color:#fff;
-	/*font-family:open-sans, roboto;*/
 	margin-bottom:20px;
 	font-size:20px;
 }
 
 .inner-container{
+	height:auto;
+	width:50%;
 	background-color:#53614c;
-	position: absolute; 
+	position:absolute;
 	top:55%;
 	left:33%;
 	transform:translate(-55%,-33%);
 }
 
+.inner-container1{
+	background-color:#53614c;
+	position:relative;
+	width:50%;
+	padding:20px;
+	margin-top: 260px;
+}
+
 .headerPadding{
-	padding-top:20px;
-	padding-left:15px;
+	padding-top:10px;
 }
 
 .aboutDiv{
@@ -159,7 +199,7 @@ background: url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/1
 }
 
 .location, .date-sel, .startTime, .endTime{
-	height: 30px;
+	height: 31px;
 	border-radius:3px;
 	border:0;
 }
@@ -284,7 +324,7 @@ li#addSpace_link{
 
 .aboutDiv h2{
 	line-height: 45px;
-    font-size: 35px;	
+    font-size: 35px;
     font-family:'Unica One', 'tahoma', sans-serif;
 }
 
@@ -310,7 +350,7 @@ li#addSpace_link{
 	display:none;
     margin: 0;
     padding: 0;
-    float: right;
+    /*float: right;*/
 }
 
 .hamburgerMenu li{
@@ -324,7 +364,7 @@ li#addSpace_link{
 
 .fa-facebook {
 	background:#3b5998
-} 
+}
 .fa-linkedin {
 	background:#007bb6
 }
@@ -357,27 +397,69 @@ li#addSpace_link{
 
 /* When the screen is less than 680 pixels wide, hide all list items, except for the first one ("Home"). Show the list item that contains the link to open and close the topnav (li.icon) */
 @media screen and (max-width:680px) {
+
+ .inner-container{
+  		width:100%;
+  		left:0;
+  	}
+
+  	.inner-container1{
+  		width:100%;
+  	}
+
+  	.location, .inner-container1 .date-sel, .inner-container1 .submitBtn1{
+  		width: 100%;
+  		margin-bottom:15px;
+  	}
+
+  	/*.inner-container1 h4{
+  		font-size:19px;
+  	}*/
+
+  	.inner-container span{
+  		margin-bottom:15px;
+  	}
+
   ul.navbar {display: none;}
-  .icon {
-    float: right;
-    display: inline-block;
-    cursor:pointer;
-  }
-
-}
-
-/* The "responsive" class is added to the navbar with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens */
-@media screen and (max-width:680px) {
-  /*ul.navbar.responsive {width:100%;position: relative;background-color:#3D4C61;}*/
-  .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-
   .space-desc-form{
   	text-align:center;
   }
+  .icon{
+  display:block;
+  position:absolute;
+  top:0;
+  right:0;
+  line-height:45px;
+  padding:5px 15px 0px 15px;
+  font-size:20px;
+  font-weight:bold;
+  cursor:pointer;
+  outline:none;
+}
+
+  .hamburgerMenu{
+  	z-index:999999;
+  	font-size:18px;
+  	width:100%;
+  	background:#f1f1f1;
+  	position:absolute;
+  	text-align:center;
+  	}
+
+  	.fa{
+  		margin-top:10px;
+  	}
 
 }
 
+@media screen and (min-width:681px) {
+	.hamburgerMenu{
+		display:none !important;
+
+	}
+}
+
+@media only screen and (min-width:681px) and (max-width: 840px) {
+	.inner-container1{
+  		width: 60%;
+  	}
