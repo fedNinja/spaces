@@ -383,7 +383,8 @@ li#addSpace_link{
 }
 
 footer {
-  min-height: 50px;
+	width: 100%;
+  min-height: 70px;
   padding: 20px;
 }
 
