@@ -358,41 +358,42 @@ li#addSpace_link{
 	list-style-type: none;
 }
 
-.fa-bars{
+.fa-bars {
 	color:#000;
 }
 
-.fa-facebook {
-	background:#3b5998
-}
-.fa-linkedin {
-	background:#007bb6
-}
-.fa-twitter {
-	background:#00aced
-}
-
-.social-icons li a i:hover {
-	background:#add1ea;
-}
-.contactLink{
+.contactLink {
 	float: left;
 	color:#fff;
 }
 
-.listDivider{
+.listDivider {
 	border: none;
     height: 1px;
     background-color: #ccc;
 }
 
-.space-desc-form fieldset{
+.space-desc-form fieldset {
 	border-top: 1px solid #ccc;
     padding-top: 30px;
     padding-bottom: 50px;
     border-left: none;
     border-right: none;
     border-bottom:none;
+}
+
+footer {
+  min-height: 50px;
+  padding: 20px;
+}
+
+footer div a {
+  color: #fff;
+	text-decoration: none;
+}
+
+footer div span i {
+  color: red;
 }
 
 /* When the screen is less than 680 pixels wide, hide all list items, except for the first one ("Home"). Show the list item that contains the link to open and close the topnav (li.icon) */
@@ -407,24 +408,21 @@ li#addSpace_link{
   		width:100%;
   	}
 
-  	.location, .inner-container1 .date-sel, .inner-container1 .submitBtn1{
+  	.location, .inner-container1 .date-sel, .inner-container1 .submitBtn1 {
   		width: 100%;
   		margin-bottom:15px;
   	}
 
-  	/*.inner-container1 h4{
-  		font-size:19px;
-  	}*/
-
-  	.inner-container span{
+  	.inner-container span {
   		margin-bottom:15px;
   	}
 
-  ul.navbar {display: none;}
+  ul.navbar { display: none; }
   .space-desc-form{
   	text-align:center;
   }
-  .icon{
+
+  .icon {
   display:block;
   position:absolute;
   top:0;
@@ -435,9 +433,9 @@ li#addSpace_link{
   font-weight:bold;
   cursor:pointer;
   outline:none;
-}
+	}
 
-  .hamburgerMenu{
+  .hamburgerMenu {
   	z-index:999999;
   	font-size:18px;
   	width:100%;
